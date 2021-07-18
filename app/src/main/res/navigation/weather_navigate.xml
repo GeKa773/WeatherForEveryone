@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weather_navigate"
+    app:startDestination="@id/weatherViewPagerFragment">
+
+    <fragment
+        android:id="@+id/weatherViewPagerFragment"
+        android:name="com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragment"
+        android:label="WeatherViewPagerFragment" >
+        <action
+            android:id="@+id/action_weatherViewPagerFragment_to_weekWeatherFragment"
+            app:destination="@id/weekWeatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weekWeatherFragment"
+        android:name="com.gekaradchenko.weatherforeveryone.weekweather.WeekWeatherFragment"
+        android:label="WeekWeatherFragment" >
+        <action
+            android:id="@+id/action_weekWeatherFragment_to_weatherViewPagerFragment"
+            app:destination="@id/weatherViewPagerFragment" />
+    </fragment>
+</navigation>

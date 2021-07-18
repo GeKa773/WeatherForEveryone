@@ -1,4 +1,4 @@
-package com.gekaradchenko.weatherforeveryone.loadingfragment
+package com.gekaradchenko.weatherforeveryone.todayweather
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,31 +6,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.gekaradchenko.weatherforeveryone.R
-import com.gekaradchenko.weatherforeveryone.databinding.FragmentLoadingBinding
+import com.gekaradchenko.weatherforeveryone.databinding.FragmentTodayWeatherBinding
 
 
-class LoadingFragment : Fragment() {
+class TodayWeatherFragment : Fragment() {
+    private val viewModel: TodayWeatherViewModel by lazy {
+        ViewModelProvider(this).get(TodayWeatherViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentLoadingBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_loading, container, false)
-        val viewModel = ViewModelProvider(this).get(LoadingViewModel::class.java)
 
-        viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
+        val binding: FragmentTodayWeatherBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_today_weather, container, false)
 
-        binding.fragmentContainerView.setOnClickListener {
+        viewModel.navigationEvent.observe(viewLifecycleOwner,::navigate)
 
+        binding.todayWeatherFragment.setOnClickListener {
             viewModel.onNavigateClick()
         }
+
 
         return binding.root
     }

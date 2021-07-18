@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".viewpager.pagefragments.Page3Fragment">
+
+        <TextView
+            android:id="@+id/page3FragmentTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/page_fragment_margin"
+            android:text="@string/beautiful"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="@dimen/page_fragment_title_size"
+            app:layout_constraintBottom_toTopOf="@+id/page3FragmentImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/page3AndroidTextView" />
+
+        <ImageView
+            android:id="@+id/page3FragmentImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/sun"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/page3FragmentTitleTextView"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/page3NextButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/page3FragmentImageView">
+
+            <TextView
+                android:id="@+id/page3FragmentTextTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/page_fragment_margin"
+                android:text="@string/second_fragment_text_3"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="@dimen/page_fragment_text_size" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/page3NextButton"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/page_fragment_button_width"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/page_fragment_margin"
+            android:text="@string/go_to_the_app"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+
+        <TextView
+            android:id="@+id/page3AndroidTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/page_fragment_margin"
+            android:text="@string/by_android_team"
+            android:gravity="end"
+            android:textColor="@color/black"
+            android:textSize="@dimen/page_fragment_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

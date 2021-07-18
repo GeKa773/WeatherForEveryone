@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".viewpager.pagefragments.Page2Fragment">
+
+        <TextView
+            android:id="@+id/page2FragmentTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/page_fragment_margin"
+            android:text="@string/stable"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="@dimen/page_fragment_title_size"
+            app:layout_constraintBottom_toTopOf="@+id/page2FragmentImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/page2FragmentImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/sun_and_clouds"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/page2FragmentTitleTextView"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/page2NextButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/page2FragmentImageView">
+
+            <TextView
+                android:id="@+id/page2FragmentTextTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/page_fragment_margin"
+                android:text="@string/second_fragment_text_2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="@dimen/page_fragment_text_size" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/page2NextButton"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/page_fragment_button_width"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/page_fragment_margin"
+            android:text="@string/next_tip"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

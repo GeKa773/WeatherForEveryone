@@ -14,6 +14,7 @@ buildscript {
         version_google_map = "17.0.1"
         version_dexter = "6.2.2"
         version_jsontokotlin = "3.6.1"
+        version_lifecycle = "2.3.1"
 
 
     }
