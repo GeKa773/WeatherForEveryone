@@ -32,6 +32,8 @@ class TodayWeatherFragment : Fragment() {
         binding.todayWeatherFragment.setOnClickListener {
             viewModel.onNavigateClick()
         }
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
 
         return binding.root

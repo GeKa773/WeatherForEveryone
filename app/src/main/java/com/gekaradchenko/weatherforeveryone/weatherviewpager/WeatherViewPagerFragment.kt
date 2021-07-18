@@ -15,6 +15,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class WeatherViewPagerFragment : Fragment() {
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -28,11 +29,24 @@ class WeekWeatherFragment : Fragment() {
         val binding: FragmentWeekWeatherBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_week_weather, container, false)
 
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
+
+        val adapter = WeekWeatherListAdapter(WeekWeatherListener {
+            viewModel.onNavigateClick()
+        })
+
         binding.weekWeatherFragment.setOnClickListener {
             viewModel.onNavigateClick()
         }
 
+        binding.weekRecyclerView.adapter = adapter
+
+        viewModel.list.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
 
 
         return binding.root
