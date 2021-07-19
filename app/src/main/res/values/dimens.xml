@@ -12,4 +12,15 @@
     <dimen name="week_weather_recycler_view_item_icon_size">100dp</dimen>
     <dimen name="week_weather_recycler_view_item_margin">8dp</dimen>
     <dimen name="week_weather_recycler_view_item_card_view_radius">4dp</dimen>
+    <dimen name="fragment_locations_margin_text_view">24dp</dimen>
+    <dimen name="fragment_locations_margin_button_start_end">80dp</dimen>
+    <dimen name="fragment_locations_margin_button_top_bot">8dp</dimen>
+    <dimen name="fragment_add_location_map_margin">8dp</dimen>
+    <dimen name="fragment_add_locations_map_margin_button_start_end">80dp</dimen>
+    <dimen name="fragment_add_location_map_mapcontainer_margin">24dp</dimen>
+    <dimen name="fragment_setting_title_text_margin">16dp</dimen>
+    <dimen name="fragment_setting_text_margin">32dp</dimen>
+    <dimen name="fragment_setting_button_left_margin">16dp</dimen>
+    <dimen name="fragment_language_setting_title_text_margin">10dp</dimen>
+    <dimen name="fragment_language_setting_text_margin">20dp</dimen>
 </resources>

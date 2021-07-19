@@ -71,4 +71,5 @@
     <string name="by_android_team">by Android Team</string>
     <string name="dialog_string_private_policy">Private policy</string>
     <string name="dialog_string_term_of_using">Term of using</string>
+    <string name="toast_permission_granted">Permission Granter</string>
 </resources>

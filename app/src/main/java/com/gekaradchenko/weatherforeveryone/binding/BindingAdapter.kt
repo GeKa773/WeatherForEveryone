@@ -1,6 +1,9 @@
 package com.gekaradchenko.weatherforeveryone.binding
 
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.Switch
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -116,7 +119,7 @@ fun TextView.setHoursPosition(position: Int) {
     }
 }
 
-@BindingAdapter("forecastTemp","forecastHumid","forecastWindSpeed",requireAll = true)
+@BindingAdapter("forecastTemp", "forecastHumid", "forecastWindSpeed", requireAll = true)
 fun TextView.setForecastString(temp: Double, humid: Double, windSpeed: Double) {
     val t = temp - TEMP
     val stringTemp = String.format(FORMAT, t)
@@ -124,5 +127,55 @@ fun TextView.setForecastString(temp: Double, humid: Double, windSpeed: Double) {
     text = "$forecastTemp/$humid%/$windSpeed${resources.getString(R.string.m_c)}"
 }
 
+
+@BindingAdapter("locationTempToday", "locationWindSpeedToday", requireAll = true)
+fun TextView.setLocationTodayForecastString(temp: Double, windSpeed: Double) {
+    val t = temp - TEMP
+    val stringTemp = String.format(FORMAT, t)
+    val forecastTemp = if (t > 0) "+$stringTemp" else stringTemp
+    text = "$forecastTemp/$windSpeed% ${resources.getString(R.string.today)}"
+}
+
+@BindingAdapter("locationTempTomorrow", "locationWindSpeedTomorrow", requireAll = true)
+fun TextView.setLocationTomorrowForecastString(temp: Double, windSpeed: Double) {
+    val t = temp - TEMP
+    val stringTemp = String.format(FORMAT, t)
+    val forecastTemp = if (t > 0) "+$stringTemp" else stringTemp
+    text = "${resources.getString(R.string.tomorrow)} $forecastTemp/$windSpeed%"
+}
+
+@BindingAdapter("buttonEnable")
+fun Button.setEnable(b: Boolean?) {
+    b?.let {
+        isEnabled = it
+    }
+}
+
+@BindingAdapter("app:goneUnless")
+fun goneUnless(view: View, visible: Boolean) {
+    view.visibility = if (visible) View.VISIBLE else View.GONE
+
+}
+
+@BindingAdapter("app:switchChecked")
+fun switchChecked(view: Switch, checked: Boolean) {
+    if (!checked) {
+        view.isChecked = false
+    }
+
+}
+
+//@BindingAdapter("viewVisibility")
+//fun View.setViewVisibility(b: Boolean?) {
+//    b?.let {
+//        if (it) {
+//            setViewVisibility(View.VISIBLE)
+//
+//        } else{
+//            setViewVisibility(View.GONE)
+//        }
+//    }
+//
+//}
 
 

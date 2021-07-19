@@ -54,6 +54,6 @@ data class Weather(
 data class WeatherX(
     val description: String,
     val icon: String,
-    val id: Double,
+    val id: Int,
     val main: String,
 )

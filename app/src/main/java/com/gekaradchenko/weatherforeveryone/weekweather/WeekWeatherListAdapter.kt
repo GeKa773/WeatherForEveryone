@@ -26,13 +26,13 @@ class WeekWeatherListAdapter(val clickListener: WeekWeatherListener) :
     }
 
     override fun onBindViewHolder(holder: WeekWeatherViewHolder, position: Int) {
-        holder.bind(getItem(position)!!, clickListener)
+        holder.bind(getItem(position), clickListener)
 
 
     }
 
 
-    companion object DiffCallback : DiffUtil.ItemCallback<WeekWeather>() {
+    private companion object DiffCallback : DiffUtil.ItemCallback<WeekWeather>() {
         override fun areItemsTheSame(oldItem: WeekWeather, newItem: WeekWeather): Boolean {
             return oldItem === newItem
         }

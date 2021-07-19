@@ -71,7 +71,7 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
                 for (i in result.hourly.indices) {
                     listWeather.add(WeekWeather(
                         i,
-                        result.current.weather.first().id,
+                        result.hourly[i].weather.first().id,
                         result.timezone_offset,
                         result.hourly[i].temp,
                         result.hourly[i].humidity,

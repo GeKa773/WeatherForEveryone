@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".addlocationmap.AddLocationMapFragment">
+
+
+        <TextView
+            android:id="@+id/addLocationTextView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fragment_add_location_map_margin"
+            android:text="@string/write_location_here"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/nameCityEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fragment_add_location_map_margin"
+            android:ems="10"
+            android:hint="usa"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addLocationTextView2" />
+
+        <fragment
+            android:id="@+id/containerMap"
+            android:layout_width="0dp"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/fragment_add_location_map_mapcontainer_margin"
+            android:background="@drawable/border_for_map"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/addLocationButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameCityEditText"
+            app:layout_constraintVertical_bias="0.52" />
+
+        <Button
+            android:id="@+id/addLocationButton"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_add_locations_map_margin_button_start_end"
+            android:layout_marginEnd="@dimen/fragment_add_locations_map_margin_button_start_end"
+            android:layout_marginBottom="@dimen/fragment_add_location_map_margin"
+            android:background="@drawable/button_background"
+            android:text="@string/add_location"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toTopOf="@+id/addLocationTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/addLocationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fragment_add_location_map_margin"
+            android:text="@string/swipe_to_remove"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

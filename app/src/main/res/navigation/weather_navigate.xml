@@ -12,6 +12,12 @@
         <action
             android:id="@+id/action_weatherViewPagerFragment_to_weekWeatherFragment"
             app:destination="@id/weekWeatherFragment" />
+        <action
+            android:id="@+id/action_weatherViewPagerFragment_to_addLocationMapFragment"
+            app:destination="@id/addLocationMapFragment" />
+        <action
+            android:id="@+id/action_weatherViewPagerFragment_to_languageSettingFragment"
+            app:destination="@id/languageSettingFragment" />
     </fragment>
     <fragment
         android:id="@+id/weekWeatherFragment"
@@ -19,6 +25,22 @@
         android:label="WeekWeatherFragment" >
         <action
             android:id="@+id/action_weekWeatherFragment_to_weatherViewPagerFragment"
+            app:destination="@id/weatherViewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLocationMapFragment"
+        android:name="com.gekaradchenko.weatherforeveryone.addlocationmap.AddLocationMapFragment"
+        android:label="AddLocationMapFragment" >
+        <action
+            android:id="@+id/action_addLocationMapFragment_to_weatherViewPagerFragment"
+            app:destination="@id/weatherViewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languageSettingFragment"
+        android:name="com.gekaradchenko.weatherforeveryone.languagesetting.LanguageSettingFragment"
+        android:label="LanguageSettingFragment" >
+        <action
+            android:id="@+id/action_languageSettingFragment_to_weatherViewPagerFragment"
             app:destination="@id/weatherViewPagerFragment" />
     </fragment>
 </navigation>
