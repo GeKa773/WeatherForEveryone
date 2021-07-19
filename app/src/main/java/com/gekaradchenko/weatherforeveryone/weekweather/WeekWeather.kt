@@ -1,8 +1,12 @@
 package com.gekaradchenko.weatherforeveryone.weekweather
 
+import java.util.*
+
 class WeekWeather(
     var id: Int,
-    var imageView: Int,
-    var timeString: String,
-    var forecastString: String,
+    var weatherId: Int,
+    var timeZone: Double,
+    var temp: Double,
+    var humid: Double,
+    var windSpeed: Double
 )

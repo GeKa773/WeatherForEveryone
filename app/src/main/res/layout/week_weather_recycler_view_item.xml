@@ -33,11 +33,13 @@
                 android:layout_marginStart="@dimen/week_weather_recycler_view_item_margin"
                 android:layout_marginTop="@dimen/week_weather_recycler_view_item_margin"
                 android:layout_marginBottom="@dimen/week_weather_recycler_view_item_margin"
-                app:imageSet="@{weekWeather.imageView}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/sun_and_clouds" />
+                app:position="@{weekWeather.id}"
+                app:srcCompat="@drawable/sun_and_clouds"
+                app:timeZone="@{weekWeather.timeZone}"
+                app:weatherId="@{weekWeather.weatherId}" />
 
             <TextView
                 android:id="@+id/dateTextViewItemRecyclerView"
@@ -49,7 +51,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/weekImageViewItemRecyclerView"
                 app:layout_constraintTop_toTopOf="@+id/weekImageViewItemRecyclerView"
-                app:setString="@{weekWeather.timeString}" />
+                app:setHoursPosition="@{weekWeather.id}" />
 
             <TextView
                 android:id="@+id/forecastTextViewItemRecyclerView"
@@ -57,11 +59,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/week_weather_recycler_view_item_margin"
+                app:forecastTemp="@{weekWeather.temp}"
+                app:forecastHumid="@{weekWeather.humid}"
+                app:forecastWindSpeed="@{weekWeather.windSpeed}"
                 app:layout_constraintBottom_toBottomOf="@+id/weekImageViewItemRecyclerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/weekImageViewItemRecyclerView"
                 app:layout_constraintTop_toBottomOf="@+id/dateTextViewItemRecyclerView"
-                app:setString="@{weekWeather.forecastString}" />
+                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

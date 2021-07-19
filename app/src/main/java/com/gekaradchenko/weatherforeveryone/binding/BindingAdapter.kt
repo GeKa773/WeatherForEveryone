@@ -19,15 +19,15 @@ fun TextView.setTemp(temp: Double) {
     val stringTemp = String.format(FORMAT, t)
     text = if (t > 0) "+$stringTemp" else stringTemp
 }
-
-@BindingAdapter("imageSet")
-fun setImageView(imageView: ImageView, imageCrs: Int) {
-    imageCrs?.let {
-        Glide.with(imageView.context)
-            .load(it)
-            .into(imageView)
-    }
-}
+//
+//@BindingAdapter("imageSet")
+//fun setImageView(imageView: ImageView, imageCrs: Int) {
+//    imageCrs?.let {
+//        Glide.with(imageView.context)
+//            .load(it)
+//            .into(imageView)
+//    }
+//}
 
 @BindingAdapter("setString")
 fun TextView.setString(string: String?) {
@@ -55,13 +55,13 @@ fun TextView.setDataToday(string: String?) {
 }
 
 @BindingAdapter("setTime")
-fun TextView.setTime(string: String?){
+fun TextView.setTime(string: String?) {
     text = SimpleDateFormat(TIME_FORMAT).format(Date())
 }
 
 
-@BindingAdapter("idIcon","timeZone",requireAll = true)
-fun ImageView.setWeatherImage(id: Int, timeZone: Double){
+@BindingAdapter("weatherId", "timeZone", "position", requireAll = false)
+fun ImageView.setWeatherImage(id: Int, timeZone: Double, position: Int?) {
 
     val date = Date()
     val localTime = date.time
@@ -73,6 +73,13 @@ fun ImageView.setWeatherImage(id: Int, timeZone: Double){
     val c = Calendar.getInstance()
     c.time = timeZoneDate
     var timeOfDay = c[Calendar.HOUR_OF_DAY]
+
+    position?.let {
+        timeOfDay += it
+        while (timeOfDay > 24) {
+            timeOfDay -= 24
+        }
+    }
 
     setImageResource(when (timeOfDay) {
 
@@ -98,6 +105,23 @@ fun ImageView.setWeatherImage(id: Int, timeZone: Double){
 
         }
     })
+}
+
+@BindingAdapter("setHoursPosition")
+fun TextView.setHoursPosition(position: Int) {
+    text = when (position) {
+        0 -> resources.getString(R.string.now)
+        1 -> "+1 ${resources.getString(R.string.hour)}"
+        else -> "+$position ${resources.getString(R.string.hours)}"
+    }
+}
+
+@BindingAdapter("forecastTemp","forecastHumid","forecastWindSpeed",requireAll = true)
+fun TextView.setForecastString(temp: Double, humid: Double, windSpeed: Double) {
+    val t = temp - TEMP
+    val stringTemp = String.format(FORMAT, t)
+    val forecastTemp = if (t > 0) "+$stringTemp" else stringTemp
+    text = "$forecastTemp/$humid%/$windSpeed${resources.getString(R.string.m_c)}"
 }
 
 

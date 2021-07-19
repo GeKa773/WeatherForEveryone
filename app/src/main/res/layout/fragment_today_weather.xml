@@ -69,7 +69,7 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/today_weather_fragment_image_view_margin"
             android:src="@drawable/clounds"
-            app:idIcon="@{viewModel.iconId}"
+            app:weatherId="@{viewModel.iconId}"
             app:timeZone="@{viewModel.iconTimeZone}"
             app:layout_constraintBottom_toTopOf="@+id/nowHumidityTextView"
             app:layout_constraintEnd_toEndOf="parent"

@@ -12,9 +12,7 @@ import com.gekaradchenko.weatherforeveryone.databinding.FragmentWeatherViewPager
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-
 class WeatherViewPagerFragment : Fragment() {
-
 
 
     override fun onCreateView(
@@ -32,10 +30,10 @@ class WeatherViewPagerFragment : Fragment() {
 
         TabLayoutMediator(binding.tableLayout, binding.weatherViewPager2) { tab, position ->
 
-            when(position){
-                0-> tab.setIcon(R.drawable.locations_list_icon)
-                1-> tab.setIcon(R.drawable.today_weather_icon)
-                2-> tab.setIcon(R.drawable.setting_icon)
+            when (position) {
+                0 -> tab.setIcon(R.drawable.locations_list_icon)
+                1 -> tab.setIcon(R.drawable.today_weather_icon)
+                2 -> tab.setIcon(R.drawable.setting_icon)
             }
 
             binding.weatherViewPager2.currentItem = 1

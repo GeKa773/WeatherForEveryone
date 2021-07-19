@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-const val TEMP = 273.15
+
 
 object UnitSome {
     fun showDialog(context: Context) {
@@ -48,117 +48,7 @@ object UnitSome {
     }
 
 
-    fun getWeatherIcon(id: Int, timeZone: Double): Int {
-        val date = Date()
-        val localTime = date.time
-        val localOffset = (date.timezoneOffset * 60000).toLong()
-        val utc = localTime + localOffset
-        val x = (utc + 1000 * timeZone).toLong()
-        val timeZoneDate = Date(x)
 
-        val c = Calendar.getInstance()
-        c.time = timeZoneDate
-        var timeOfDay = c[Calendar.HOUR_OF_DAY]
-
-        return when (timeOfDay) {
-
-            in 6..20 ->
-                when (id) {
-                    in 0..299 -> R.drawable.rain_with_thunderstorm
-                    in 300..503 -> R.drawable.rain
-                    in 504..599 -> R.drawable.rain_with_snow
-                    in 690..700 -> R.drawable.snow
-                    in 701..799 -> R.drawable.sun_and_clouds
-                    800 -> R.drawable.sun
-                    else -> R.drawable.clounds
-                }
-
-            else -> when (id) {
-                in 0..299 -> R.drawable.night_rain
-                in 300..503 -> R.drawable.night_rain
-                in 504..599 -> R.drawable.night_snow
-                in 690..700 -> R.drawable.night_snow
-                in 701..799 -> R.drawable.night_clouds
-                800 -> R.drawable.moon
-                else -> R.drawable.night_clouds
-
-            }
-        }
-
-    }
-
-
-    fun getTemp(temp: Double): String {
-        val t = temp - TEMP
-        val stringTemp = String.format("%.1f", t)
-        return if (t > 0) {
-            "+$stringTemp"
-        } else {
-            "-$stringTemp"
-        }
-    }
-
-
-
-
-    fun getWeekWeatherIcon(id: Int, timeZone: Double, position: Int): Int {
-        val date = Date()
-        val localTime = date.time
-        val localOffset = (date.timezoneOffset * 60000).toLong()
-        val utc = localTime + localOffset
-        val x = (utc + 1000 * timeZone).toLong()
-        val timeZoneDate = Date(x)
-
-        val c = Calendar.getInstance()
-        c.time = timeZoneDate
-        var timeOfDay = c[Calendar.HOUR_OF_DAY]
-        timeOfDay += position
-        while (timeOfDay > 24) {
-            timeOfDay -= 24
-        }
-        return when (timeOfDay) {
-
-            in 6..20 ->
-                when (id) {
-                    in 0..299 -> R.drawable.rain_with_thunderstorm
-                    in 300..503 -> R.drawable.rain
-                    in 504..599 -> R.drawable.rain_with_snow
-                    in 690..700 -> R.drawable.snow
-                    in 701..799 -> R.drawable.sun_and_clouds
-                    800 -> R.drawable.sun
-                    else -> R.drawable.clounds
-                }
-
-            else -> when (id) {
-                in 0..299 -> R.drawable.night_rain
-                in 300..503 -> R.drawable.night_rain
-                in 504..599 -> R.drawable.night_snow
-                in 690..700 -> R.drawable.night_snow
-                in 701..799 -> R.drawable.night_clouds
-                800 -> R.drawable.moon
-                else -> R.drawable.night_clouds
-
-            }
-        }
-
-    }
-
-    fun getHoursString(app: Application, position: Int): String {
-        return when (position) {
-            0 -> app.getString(R.string.now)
-            1 -> "+1 ${app.getString(R.string.hour)}"
-            else -> "+$position ${app.getString(R.string.hours)}"
-
-        }
-
-    }
-
-    fun getForecastString(
-        app: Application,
-        temp: Double,
-        humid: Double,
-        windSpeed: Double,
-    ): String = "${getTemp(temp)}/${humid}%/${windSpeed}${app.getString(R.string.m_c)}"
 
 
 
