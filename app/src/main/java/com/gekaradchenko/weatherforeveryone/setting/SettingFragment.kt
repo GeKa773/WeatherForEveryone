@@ -1,15 +1,16 @@
 package com.gekaradchenko.weatherforeveryone.setting
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.gekaradchenko.weatherforeveryone.MainActivity
 import com.gekaradchenko.weatherforeveryone.R
 import com.gekaradchenko.weatherforeveryone.databinding.FragmentSettingBinding
 
@@ -35,19 +36,39 @@ class SettingFragment : Fragment() {
         }
         binding.viewModel = viewModel
 
-        binding.settingSwitch1.setOnCheckedChangeListener { buttonView, isChecked ->
+
+        binding.nightModeSettingSwitch.setOnCheckedChangeListener { _, isChecked ->
+//            viewModel.savaModeShared(isChecked)
+//
+            //Exception here !!!
+//            viewModel.modeSet(isChecked)
+
+        }
+
+        binding.nightModeSettingSwitch.setOnClickListener {
+            viewModel.savaTooModeShared()
+
+            //then do it
+
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+            requireActivity().finishAffinity()
+        }
+
+
+
+        binding.settingSwitch1.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setShowAlerts(isChecked)
         }
 
-        binding.settingSwitch2.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.settingSwitch2.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setVeryHot(isChecked)
         }
 
-        binding.settingSwitch3.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.settingSwitch3.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setSnow(isChecked)
         }
 
-        binding.settingSwitch4.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.settingSwitch4.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setHot(isChecked)
         }
 

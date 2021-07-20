@@ -25,4 +25,12 @@ class PreferencesSetting(context: Context) {
         editor.putString(LOCAL_SETTING, language)
         editor.apply()
     }
+
+    suspend fun getDefaultMode(): Boolean =
+        sharedSetting.getBoolean(MODE_SETTING, false)
+
+    suspend fun saveDefaultMode(mode: Boolean) {
+        editor.putBoolean(MODE_SETTING, mode)
+        editor.apply()
+    }
 }

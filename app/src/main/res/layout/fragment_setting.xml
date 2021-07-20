@@ -34,7 +34,8 @@
             android:layout_marginStart="@dimen/fragment_setting_text_margin"
             app:layout_constraintBottom_toTopOf="@+id/notificationsSettingTextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/themeSettingTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/themeSettingTextView"
+            app:switchChecked="@{viewModel.modeNight}" />
 
         <TextView
             style="@style/TextViewSettingStyle"

@@ -2,6 +2,7 @@ package com.gekaradchenko.weatherforeveryone
 
 import android.app.Application
 import android.content.res.Configuration
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,16 +21,27 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val language: LiveData<String>
         get() = _language
 
+    private val _modeNight = MutableLiveData<Boolean>()
+    val modeNight: LiveData<Boolean>
+        get() = _modeNight
+
     init {
-        setLanguage()
+        setSetting()
     }
 
-    private fun setLanguage() {
+    private fun setSetting() {
         coroutineScope.launch {
-                _language.value = shared.getDefaultLanguage()
+            _language.value = shared.getDefaultLanguage()
+            _modeNight.value = shared.getDefaultMode()
         }
     }
-
+    fun modeSet(mode:Boolean){
+        if (mode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
 
 
     override fun onCleared() {

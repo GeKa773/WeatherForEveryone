@@ -13,7 +13,7 @@ import com.gekaradchenko.weatherforeveryone.lifecycle.SingleLiveEvent
 import com.gekaradchenko.weatherforeveryone.loadingfragment.LoadingFragmentDirections
 import com.gekaradchenko.weatherforeveryone.network.WeatherApi
 import com.gekaradchenko.weatherforeveryone.preferences.PreferencesLocations
-import com.gekaradchenko.weatherforeveryone.repository.DataStoreRepository
+
 import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragmentDirections
 import kotlinx.coroutines.*
 import kotlin.properties.Delegates
@@ -29,7 +29,7 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
     val app = application
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-    private val repository = DataStoreRepository(app)
+
     private val shared = PreferencesLocations(app)
 
 
