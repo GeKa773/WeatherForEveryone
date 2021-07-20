@@ -2,6 +2,7 @@ package com.gekaradchenko.weatherforeveryone.todayweather
 
 import android.app.Application
 import android.util.Log
+import androidx.datastore.core.DataStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,11 +12,11 @@ import com.gekaradchenko.weatherforeveryone.UnitSome
 import com.gekaradchenko.weatherforeveryone.lifecycle.SingleLiveEvent
 import com.gekaradchenko.weatherforeveryone.loadingfragment.LoadingFragmentDirections
 import com.gekaradchenko.weatherforeveryone.network.WeatherApi
+import com.gekaradchenko.weatherforeveryone.preferences.PreferencesLocations
+import com.gekaradchenko.weatherforeveryone.repository.DataStoreRepository
 import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragmentDirections
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlin.properties.Delegates
 
 const val LAT = 50.4547
 const val LON = 30.5238
@@ -28,6 +29,10 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
     val app = application
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    private val repository = DataStoreRepository(app)
+    private val shared = PreferencesLocations(app)
+
+
 
 
     private val _navigationEvent = SingleLiveEvent<NavDirections>()
@@ -75,14 +80,27 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
         get() = _timeNow
 
     init {
+
         getWeatherReal()
     }
 
+
+
+
     private fun getWeatherReal() {
+
+
         coroutineScope.launch {
+            val lat: Double
+            val lon: Double
+
+            withContext(Dispatchers.IO){
+                lat = shared.getDefaultLat()
+                lon = shared.getDefaultLon()
+            }
 
             val getWeatherDeferred = WeatherApi.retrofitService.getWeather(
-                LAT, LON,
+                lat,lon,
                 EXCLUDE,
                 APPID_KEY
             )

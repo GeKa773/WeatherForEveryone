@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherForEveryone</string>
+
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+
+    <string name="second_fragment_text_1">Lorem ipsum dolor sit amet, conctetur adipiscing elit. Vestibulum semper ac the righteous, тоже не сказано. Планирование блокировки слоя питания. Теперь основная морковь перед дверью морковь. Юбка присутствует как в градуированном комплекте, так и в бюстгальтере долины. Curabitur blandit sem lectus, id interdum eros molestie vitae. Нулла. Производительность самого большого живого завала. Весь страх сейчас, но цена ес но, по всей стране и чили. Меценат горшок - это всего лишь футбольный уик-энд, но разработчикам это неприлично. Нет телевидения, нет, в рамках condimentum eu, venenatis vel. Нет mollis metus ac toror fringilla, это не боль, вызывающая ожирение. Элемент клинического планирования, чем у длиннопротеинового Mauris. Макияж, пока в моркови не было много сахара. Nike и авиакомпания.</string>
+    <string name="second_fragment_text_2">Домашнее удобство авиакомпании того стоит. Перед самым первым баскетбольным мячом их пасть горе и клиническая забота; Меценат в металлической урне. Мы используем more и conquat enim. Запах Ullamcorper, как будто многие из нас живут когда-то. Без питания был долор амет, хватай его, пока он не любит экологических игроков Мауриса. Белок бюро может быть таким же, как и вульпутат. Жасмин на задворках девелоперов, девелоперов без вкуса салата.</string>
+    <string name="second_fragment_text_3">Suspendisse sem placerat много разочарований, но vitae pellentesque nisl mattis. Лаореет футбол, но только в сфере недвижимости. Мэттис Вененатис, tristique mattis vitae conquat, metus toror ullamcorper mi, laoreet toror, но это была улыбка. Даже улыбка на выходных по всей стране. Vivamus nibh ligula pretium Cum mauris justo eleifend hendrerit, врата боли не сделали. Быть сделанным в некоторых озерах без ненависти, даже без пароля. Suspendisse nec ante lorem.</string>
+
+
+    <string name="theme">Тема:</string>
+    <string name="night_mode">Ночной режим</string>
+    <string name="notification">Уведомление:</string>
+    <string name="show_alerts">Показать оповещения</string>
+    <string name="very_hot">Очень жарко</string>
+    <string name="snow">Снег</string>
+    <string name="hot">Жарко</string>
+    <string name="language_text_view">Язык:</string>
+    <string name="language">Русский</string>
+    <string name="english">Английский</string>
+    <string name="russian">Русский</string>
+    <string name="information">Информация:</string>
+    <string name="button_temp">Темп</string>
+    <string name="button_humid">Влажный</string>
+    <string name="drag_item">Перетащите элемент ниже и наоборот</string>
+    <string name="button_wind">Ветер</string>
+    <string name="button_date">Дата</string>
+
+
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
+
+    <string name="humidity">Влажность: </string>
+    <string name="wind_speed">Скорость ветра: </string>
+    <string name="m_c">м/с</string>
+    <string name="now">Сейчас</string>
+    <string name="hour">Час</string>
+    <string name="hours">Часа</string>
+
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
+
+    <string name="write_location_here">напишите здесь местоположение</string>
+    <string name="add_location">ДОБАВИТЬ МЕСТОПОЛОЖЕНИЕ</string>
+    <string name="swipe_to_remove">Проведите, чтобы удалить</string>
+    <string name="next_tip">Следующая подсказка</string>
+    <string name="go_to_the_app">ПЕРЕЙТИ В ПРИЛОЖЕНИЕ</string>
+
+    <string name="quick">Быстро</string>
+    <string name="stable">Стабильный</string>
+    <string name="beautiful">Красивый</string>
+
+    <string name="title_dialog">Есть ИНФОРМАЦИЯ</string>
+    <string name="text_dialog">Рекомендуется всем, кроме Ид Вэлли. До футбольного соуса чили, лопатой землю, одобрение ветра. Или соревнование по баскетболу, важно получить финансирование. Машин много, но всегда горшок, застройщик. Aliquam convallis placerat out и hendrerit ipsum auctor quis. Он тоже закончил подъезд мягкой недвижимости. Mauris justo ligula, mattis sit amet facilisis ut, говядина от потребителя.</string>
+    <string name="privacy_policy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</string>
+    <string name="term_of_using">СРОК ИСПОЛЬЗОВАНИЯ</string>
+
+    <string name="home_weather_bottom">Домашняя погода</string>
+    <string name="location_bottom">Место расположения</string>
+    <string name="Setting_bottom">Параметр</string>
+
+
+    <string name="by_android_team">от команды Android</string>
+    <string name="dialog_string_private_policy">Частная политика</string>
+    <string name="dialog_string_term_of_using">Срок использования</string>
+    <string name="toast_permission_granted">Разрешение на выдачу разрешений</string>
+</resources>

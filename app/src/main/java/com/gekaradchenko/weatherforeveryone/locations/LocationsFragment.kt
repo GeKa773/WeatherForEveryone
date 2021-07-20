@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.gekaradchenko.weatherforeveryone.R
+import com.gekaradchenko.weatherforeveryone.WeatherActivity
 import com.gekaradchenko.weatherforeveryone.addlocationmap.AddLocationMapViewModelFactory
 import com.gekaradchenko.weatherforeveryone.database.LocationDatabase
 import com.gekaradchenko.weatherforeveryone.databinding.FragmentLocationsBinding
@@ -65,6 +66,8 @@ class LocationsFragment : Fragment() {
         }
 
         val adapter = LocationsListAdapter(LocationsListener {
+            viewModel.saveLocationsToShared(it)
+            startActivity(Intent(requireContext(), WeatherActivity::class.java))
 
         })
 
@@ -92,7 +95,7 @@ class LocationsFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 viewModel.list.value?.let {
                     val locationsForecast = it[viewHolder.adapterPosition]
-                    val idDelete  = locationsForecast.id
+                    val idDelete = locationsForecast.id
                     viewModel.deleteLocationFromBD(idDelete)
                 }
 

@@ -9,14 +9,12 @@ import androidx.navigation.NavDirections
 import com.gekaradchenko.weatherforeveryone.UnitSome
 import com.gekaradchenko.weatherforeveryone.lifecycle.SingleLiveEvent
 import com.gekaradchenko.weatherforeveryone.network.WeatherApi
+import com.gekaradchenko.weatherforeveryone.preferences.PreferencesLocations
 import com.gekaradchenko.weatherforeveryone.todayweather.APPID_KEY
 import com.gekaradchenko.weatherforeveryone.todayweather.EXCLUDE
 import com.gekaradchenko.weatherforeveryone.todayweather.LAT
 import com.gekaradchenko.weatherforeveryone.todayweather.LON
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 class WeekWeatherViewModel(application: Application) : AndroidViewModel(application) {
@@ -24,6 +22,7 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
     val app = application
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    private val shared = PreferencesLocations(app)
 
 
     private val _navigationEvent = SingleLiveEvent<NavDirections>()
@@ -55,9 +54,15 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
 
     private fun getWeekWeatherReal() {
         coroutineScope.launch {
+            val lat: Double
+            val lon: Double
 
+            withContext(Dispatchers.IO){
+                lat = shared.getDefaultLat()
+                lon = shared.getDefaultLon()
+            }
             val getWeatherDeferred = WeatherApi.retrofitService.getWeather(
-                LAT, LON,
+                lat,lon,
                 EXCLUDE,
                 APPID_KEY
             )

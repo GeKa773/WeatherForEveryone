@@ -14,8 +14,10 @@ import com.gekaradchenko.weatherforeveryone.database.LocationDao
 import com.gekaradchenko.weatherforeveryone.lifecycle.SingleLiveEvent
 import com.gekaradchenko.weatherforeveryone.loadingfragment.LoadingFragmentDirections
 import com.gekaradchenko.weatherforeveryone.network.WeatherApi
+import com.gekaradchenko.weatherforeveryone.preferences.PreferencesLocations
 import com.gekaradchenko.weatherforeveryone.todayweather.APPID_KEY
 import com.gekaradchenko.weatherforeveryone.todayweather.EXCLUDE
+import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragment
 import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragmentDirections
 import com.gekaradchenko.weatherforeveryone.weekweather.WeekWeather
 import com.karumi.dexter.Dexter
@@ -35,6 +37,7 @@ class LocationsViewModel(data: LocationDao, application: Application) :
 
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    private val shared = PreferencesLocations(app)
 
     private val _permissionBoolean = MutableLiveData<Boolean>()
     val permissionBoolean: LiveData<Boolean>
@@ -84,6 +87,29 @@ class LocationsViewModel(data: LocationDao, application: Application) :
 
 
         }
+    }
+
+    fun saveLocationsToShared(id: Long) {
+        coroutineScope.launch {
+            withContext(Dispatchers.IO) {
+                list.value?.let {
+                    val loc = it.filter {
+                        it.id == id
+                    }
+                    val lat = loc.first().lat
+                    val lon = loc.first().lon
+                    shared.saveDefaultLocations(lat, lon)
+                }
+            }
+        }
+        app.onCreate()
+
+
+    }
+
+    private fun updateActivity(){
+//        requireActivity().supportFragmentManager.beginTransaction().detach(this).commit()
+
     }
 
 

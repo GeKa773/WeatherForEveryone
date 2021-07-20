@@ -66,8 +66,8 @@
     <string name="Setting_bottom">Setting</string>
 
 
-    <string name="loading_fragment_pro_weather">PRO <br />WEATHER</string>
-    <string name="loading_fragment_loading">LOADING...</string>
+    <string name="loading_fragment_pro_weather" translatable="false">PRO <br />WEATHER</string>
+    <string name="loading_fragment_loading" translatable="false">LOADING...</string>
     <string name="by_android_team">by Android Team</string>
     <string name="dialog_string_private_policy">Private policy</string>
     <string name="dialog_string_term_of_using">Term of using</string>
