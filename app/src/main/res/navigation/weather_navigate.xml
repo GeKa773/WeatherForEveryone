@@ -28,8 +28,7 @@
         <action
             android:id="@+id/action_weekWeatherFragment_to_weatherViewPagerFragment"
             app:destination="@id/weatherViewPagerFragment"
-            app:enterAnim="@anim/from_right_to_left"
-            app:exitAnim="@anim/exit_from_right" />
+            app:enterAnim="@anim/from_right_to_left" />
     </fragment>
     <fragment
         android:id="@+id/addLocationMapFragment"

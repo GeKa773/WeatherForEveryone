@@ -107,9 +107,6 @@ class LocationsViewModel(data: LocationDao, application: Application) :
                 }
             }
         }
-        app.onCreate()
-
-
     }
 
 

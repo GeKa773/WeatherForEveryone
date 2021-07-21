@@ -6,21 +6,27 @@
     <dimen name="page_fragment_text_size">16sp</dimen>
     <dimen name="page_fragment_button_width">130dp</dimen>
     <dimen name="custom_dialog_margin">16dp</dimen>
+
     <dimen name="today_weather_fragment_margin">16dp</dimen>
     <dimen name="today_weather_fragment_image_view_margin">8dp</dimen>
+
     <dimen name="week_weather_fragment_margin">16dp</dimen>
     <dimen name="week_weather_recycler_view_item_icon_size">100dp</dimen>
     <dimen name="week_weather_recycler_view_item_margin">8dp</dimen>
     <dimen name="week_weather_recycler_view_item_card_view_radius">4dp</dimen>
+
     <dimen name="fragment_locations_margin_text_view">24dp</dimen>
     <dimen name="fragment_locations_margin_button_start_end">80dp</dimen>
     <dimen name="fragment_locations_margin_button_top_bot">8dp</dimen>
+
     <dimen name="fragment_add_location_map_margin">8dp</dimen>
     <dimen name="fragment_add_locations_map_margin_button_start_end">80dp</dimen>
     <dimen name="fragment_add_location_map_mapcontainer_margin">24dp</dimen>
+
     <dimen name="fragment_setting_title_text_margin">16dp</dimen>
     <dimen name="fragment_setting_text_margin">32dp</dimen>
     <dimen name="fragment_setting_button_left_margin">16dp</dimen>
+
     <dimen name="fragment_language_setting_title_text_margin">10dp</dimen>
     <dimen name="fragment_language_setting_text_margin">20dp</dimen>
 
@@ -31,4 +37,16 @@
     <dimen name="custom_dialog_padding">8dp</dimen>
 
     <dimen name="button_style_padding">4dp</dimen>
+
+
+    <dimen name="locations_recycler_view_item_margin_32">32dp</dimen>
+    <dimen name="locations_recycler_view_item_margin_8">8dp</dimen>
+    <dimen name="locations_recycler_view_item_line_height_50">50dp</dimen>
+    <dimen name="locations_recycler_view_item_line_margin_end_24">24dp</dimen>
+    <dimen name="locations_recycler_view_item_icon_size">100dp</dimen>
+    <dimen name="locations_recycler_view_item_margin_16">16dp</dimen>
+    <dimen name="locations_recycler_view_item_margin_44">44dp</dimen>
+    <dimen name="locations_recycler_view_item_margin_40">40dp</dimen>
+    <dimen name="locations_recycler_view_item_margin_4">4dp</dimen>
+    <dimen name="locations_recycler_view_item_cardview_radius">4dp</dimen>
 </resources>
