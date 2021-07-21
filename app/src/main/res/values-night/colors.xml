@@ -15,5 +15,7 @@
 
     <color name="background_color">#2B2B2B</color>
     <color name="background_card_view_color">#202020</color>
+
     <color name="android_team">#FFFFFF</color>
+    <color name="today_weather_temp_and_time_text_view">#FFFFFF</color>
 </resources>

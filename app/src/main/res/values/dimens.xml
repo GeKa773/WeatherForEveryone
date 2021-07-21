@@ -28,4 +28,7 @@
     <dimen name="text_weather_fragment_size">16sp</dimen>
     <dimen name="padding_button_setting_fragment">7dp</dimen>
     <dimen name="radius_button_setting_fragment">15dp</dimen>
+    <dimen name="custom_dialog_padding">8dp</dimen>
+
+    <dimen name="button_style_padding">4dp</dimen>
 </resources>

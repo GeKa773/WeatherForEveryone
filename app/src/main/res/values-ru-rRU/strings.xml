@@ -70,4 +70,8 @@
     <string name="dialog_string_private_policy">Частная политика</string>
     <string name="dialog_string_term_of_using">Срок использования</string>
     <string name="toast_permission_granted">Разрешение на выдачу разрешений</string>
+
+    <string name="menu_location">Локация</string>
+    <string name="menu_home_weather">Дом погода</string>
+    <string name="menu_setting">Настройки</string>
 </resources>

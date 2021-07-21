@@ -20,7 +20,6 @@
             android:src="@drawable/gif"
             app:layout_constraintBottom_toTopOf="@+id/weatherProTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +35,6 @@
             android:textStyle="italic|bold"
             app:layout_constraintBottom_toTopOf="@+id/loadingTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.417"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
 

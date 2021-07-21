@@ -17,4 +17,5 @@
     <color name="background_card_view_color">#FFFFFF</color>
 
     <color name="android_team">#000000</color>
+    <color name="today_weather_temp_and_time_text_view">#000000</color>
 </resources>

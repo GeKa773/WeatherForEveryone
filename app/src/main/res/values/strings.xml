@@ -73,4 +73,7 @@
     <string name="dialog_string_term_of_using">Term of using</string>
     <string name="toast_permission_granted">Permission Granter</string>
     <string name="usa_hint" translatable="false">usa</string>
+    <string name="menu_location">Location</string>
+    <string name="menu_home_weather">Home weather</string>
+    <string name="menu_setting">Setting</string>
 </resources>

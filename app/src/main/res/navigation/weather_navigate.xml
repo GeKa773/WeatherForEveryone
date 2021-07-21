@@ -11,7 +11,9 @@
         android:label="WeatherViewPagerFragment" >
         <action
             android:id="@+id/action_weatherViewPagerFragment_to_weekWeatherFragment"
-            app:destination="@id/weekWeatherFragment" />
+            app:destination="@id/weekWeatherFragment"
+            app:enterAnim="@anim/from_left_to_right"
+            app:exitAnim="@anim/exit_from_left" />
         <action
             android:id="@+id/action_weatherViewPagerFragment_to_addLocationMapFragment"
             app:destination="@id/addLocationMapFragment" />
@@ -25,7 +27,9 @@
         android:label="WeekWeatherFragment" >
         <action
             android:id="@+id/action_weekWeatherFragment_to_weatherViewPagerFragment"
-            app:destination="@id/weatherViewPagerFragment" />
+            app:destination="@id/weatherViewPagerFragment"
+            app:enterAnim="@anim/from_right_to_left"
+            app:exitAnim="@anim/exit_from_right" />
     </fragment>
     <fragment
         android:id="@+id/addLocationMapFragment"

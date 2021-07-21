@@ -4,13 +4,13 @@
     <item
         android:id="@+id/locationFragment"
         android:icon="@drawable/ic_outline_list_alt_24"
-        android:title="Location" />
+        android:title="@string/menu_location" />
     <item
         android:id="@+id/todayWeatherFragment"
         android:icon="@drawable/ic_outline_home_24"
-        android:title="Home weather" />
+        android:title="@string/menu_home_weather" />
     <item
         android:id="@+id/settingFragment"
         android:icon="@drawable/ic_sharp_settings_applications_24"
-        android:title="Setting" />
+        android:title="@string/menu_setting" />
 </menu>
