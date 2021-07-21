@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#BCBCBC</color>
+    <color name="purple_500">#232323</color>
+    <color name="purple_700">#202020</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="button_background">#00000000</color>
+    <color name="button_setting_fragment_color_default">#222222</color>
+    <color name="button_setting_fragment_color_pressed">#C17A7A</color>
+    <color name="map_border_color">#474747</color>
+
+    <color name="background_color">#2B2B2B</color>
+    <color name="background_card_view_color">#202020</color>
+    <color name="android_team">#FFFFFF</color>
+</resources>

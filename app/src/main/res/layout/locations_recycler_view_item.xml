@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="locationsForecast"
             type="com.gekaradchenko.weatherforeveryone.locations.LocationsForecast" />
@@ -14,8 +15,10 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="@{()->clickListener.onClick(locationsForecast)}"
-        android:layout_height="match_parent">
+        app:cardBackgroundColor="@color/background_card_view_color"
+        app:cardCornerRadius="@dimen/cardview_default_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -53,22 +56,20 @@
                 android:id="@+id/todayWeatherImageViewLocation"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:weatherId="@{locationsForecast.weatherIdToday}"
-                app:timeZone="@{locationsForecast.timeZone}"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/line1Location"
                 app:layout_constraintTop_toTopOf="@+id/line1Location"
-                app:srcCompat="@drawable/sun_and_clouds" />
+                app:srcCompat="@drawable/sun_and_clouds"
+                app:timeZone="@{locationsForecast.timeZone}"
+                app:weatherId="@{locationsForecast.weatherIdToday}" />
 
             <TextView
                 android:id="@+id/todayForecastTextViewLocation"
                 style="@style/TextLocationRecyclerViewItems"
                 android:layout_width="0dp"
 
-                app:locationTempToday="@{locationsForecast.tempToday}"
-                app:locationWindSpeedToday="@{locationsForecast.windSpeedToday}"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -78,7 +79,9 @@
                 android:text="+21/41% Today"
                 app:layout_constraintEnd_toStartOf="@+id/tomorrowWeatherImageViewLocation"
                 app:layout_constraintStart_toEndOf="@+id/todayWeatherImageViewLocation"
-                app:layout_constraintTop_toTopOf="@+id/line1Location" />
+                app:layout_constraintTop_toTopOf="@+id/line1Location"
+                app:locationTempToday="@{locationsForecast.tempToday}"
+                app:locationWindSpeedToday="@{locationsForecast.windSpeedToday}" />
 
             <ImageView
                 android:id="@+id/line21Location"
@@ -113,13 +116,13 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                app:weatherId="@{locationsForecast.weatherIdTomorrow}"
-                app:timeZone="@{locationsForecast.timeZone}"
-                app:position="@{24}"
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/rain_with_thunderstorm" />
+                app:position="@{24}"
+                app:srcCompat="@drawable/rain_with_thunderstorm"
+                app:timeZone="@{locationsForecast.timeZone}"
+                app:weatherId="@{locationsForecast.weatherIdTomorrow}" />
 
             <TextView
                 android:id="@+id/tomorrowForecastTextViewLocation"
@@ -127,8 +130,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                app:locationTempTomorrow="@{locationsForecast.tempTomorrow}"
-                app:locationWindSpeedTomorrow="@{locationsForecast.windSpeedTomorrow}"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginRight="4dp"
@@ -137,7 +138,9 @@
                 app:layout_constraintBottom_toBottomOf="@+id/line22Location"
                 app:layout_constraintEnd_toStartOf="@+id/tomorrowWeatherImageViewLocation"
                 app:layout_constraintStart_toStartOf="@+id/line22Location"
-                app:layout_constraintTop_toBottomOf="@+id/line1Location" />
+                app:layout_constraintTop_toBottomOf="@+id/line1Location"
+                app:locationTempTomorrow="@{locationsForecast.tempTomorrow}"
+                app:locationWindSpeedTomorrow="@{locationsForecast.windSpeedTomorrow}" />
 
             <ImageView
                 android:id="@+id/line3Location"

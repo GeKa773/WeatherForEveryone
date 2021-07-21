@@ -6,14 +6,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
-import com.gekaradchenko.weatherforeveryone.UnitSome
 import com.gekaradchenko.weatherforeveryone.lifecycle.SingleLiveEvent
 import com.gekaradchenko.weatherforeveryone.network.WeatherApi
 import com.gekaradchenko.weatherforeveryone.preferences.PreferencesLocations
 import com.gekaradchenko.weatherforeveryone.todayweather.APPID_KEY
 import com.gekaradchenko.weatherforeveryone.todayweather.EXCLUDE
-import com.gekaradchenko.weatherforeveryone.todayweather.LAT
-import com.gekaradchenko.weatherforeveryone.todayweather.LON
 import kotlinx.coroutines.*
 
 

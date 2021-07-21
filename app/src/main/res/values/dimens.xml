@@ -23,4 +23,9 @@
     <dimen name="fragment_setting_button_left_margin">16dp</dimen>
     <dimen name="fragment_language_setting_title_text_margin">10dp</dimen>
     <dimen name="fragment_language_setting_text_margin">20dp</dimen>
+
+
+    <dimen name="text_weather_fragment_size">16sp</dimen>
+    <dimen name="padding_button_setting_fragment">7dp</dimen>
+    <dimen name="radius_button_setting_fragment">15dp</dimen>
 </resources>

@@ -22,15 +22,6 @@ fun TextView.setTemp(temp: Double) {
     val stringTemp = String.format(FORMAT, t)
     text = if (t > 0) "+$stringTemp" else stringTemp
 }
-//
-//@BindingAdapter("imageSet")
-//fun setImageView(imageView: ImageView, imageCrs: Int) {
-//    imageCrs?.let {
-//        Glide.with(imageView.context)
-//            .load(it)
-//            .into(imageView)
-//    }
-//}
 
 @BindingAdapter("setString")
 fun TextView.setString(string: String?) {
@@ -60,6 +51,17 @@ fun TextView.setDataToday(string: String?) {
 @BindingAdapter("setTime")
 fun TextView.setTime(string: String?) {
     text = SimpleDateFormat(TIME_FORMAT).format(Date())
+}
+
+@BindingAdapter("setHumid")
+fun TextView.setHumid(humid: Double) {
+    text = "${resources.getString(R.string.humidity)} $humid%"
+}
+
+@BindingAdapter("setWindSpeed")
+fun TextView.setWindSpeed(windSpeed: Double) {
+    text =
+        "${resources.getString(R.string.wind_speed)} $windSpeed ${resources.getString(R.string.m_c)}"
 }
 
 
@@ -172,17 +174,6 @@ fun switchCheckedShowAlert(view: Switch, checked: Boolean) {
 
 }
 
-//@BindingAdapter("viewVisibility")
-//fun View.setViewVisibility(b: Boolean?) {
-//    b?.let {
-//        if (it) {
-//            setViewVisibility(View.VISIBLE)
-//
-//        } else{
-//            setViewVisibility(View.GONE)
-//        }
-//    }
-//
-//}
+
 
 

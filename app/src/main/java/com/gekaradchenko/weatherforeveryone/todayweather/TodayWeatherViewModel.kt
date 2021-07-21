@@ -2,21 +2,16 @@ package com.gekaradchenko.weatherforeveryone.todayweather
 
 import android.app.Application
 import android.util.Log
-import androidx.datastore.core.DataStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
-import com.gekaradchenko.weatherforeveryone.R
-import com.gekaradchenko.weatherforeveryone.UnitSome
 import com.gekaradchenko.weatherforeveryone.lifecycle.SingleLiveEvent
-import com.gekaradchenko.weatherforeveryone.loadingfragment.LoadingFragmentDirections
 import com.gekaradchenko.weatherforeveryone.network.WeatherApi
 import com.gekaradchenko.weatherforeveryone.preferences.PreferencesLocations
 
 import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragmentDirections
 import kotlinx.coroutines.*
-import kotlin.properties.Delegates
 
 const val LAT = 50.4547
 const val LON = 30.5238
@@ -31,8 +26,6 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val shared = PreferencesLocations(app)
-
-
 
 
     private val _navigationEvent = SingleLiveEvent<NavDirections>()
@@ -68,12 +61,12 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
     val iconTimeZone: LiveData<Double>
         get() = _iconTimeZone
 
-    private val _humid = MutableLiveData<String>()
-    val humid: LiveData<String>
+    private val _humid = MutableLiveData<Double>()
+    val humid: LiveData<Double>
         get() = _humid
 
-    private val _wildSpeed = MutableLiveData<String>()
-    val wildSpeed: LiveData<String>
+    private val _wildSpeed = MutableLiveData<Double>()
+    val wildSpeed: LiveData<Double>
         get() = _wildSpeed
     private val _timeNow = MutableLiveData<String>()
     val timeNow: LiveData<String>
@@ -85,8 +78,6 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
     }
 
 
-
-
     private fun getWeatherReal() {
 
 
@@ -94,13 +85,13 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
             val lat: Double
             val lon: Double
 
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 lat = shared.getDefaultLat()
                 lon = shared.getDefaultLon()
             }
 
             val getWeatherDeferred = WeatherApi.retrofitService.getWeather(
-                lat,lon,
+                lat, lon,
                 EXCLUDE,
                 APPID_KEY
             )
@@ -112,11 +103,8 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
                 _temp.value = result.current.temp
                 _iconId.value = result.current.weather.first().id
                 _iconTimeZone.value = result.timezone_offset
-                _humid.value = "${app.getString(R.string.humidity)} ${result.current.humidity}%"
-                _wildSpeed.value =
-                    "${app.getString(R.string.wind_speed)} ${result.current.wind_speed} ${
-                        app.getString(R.string.m_c)
-                    }"
+                _humid.value = result.current.humidity
+                _wildSpeed.value = result.current.wind_speed
             } catch (t: Throwable) {
                 Log.d("TodayWeatherViewModel", "getWeatherReal: ${t.message}")
             }

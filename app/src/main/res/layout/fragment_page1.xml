@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/page_fragment_margin"
             android:text="@string/by_android_team"
-            android:textColor="@color/black"
+            android:textColor="@color/android_team"
             android:textSize="@dimen/page_fragment_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
