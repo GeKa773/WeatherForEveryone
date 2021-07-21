@@ -23,8 +23,8 @@ import com.gekaradchenko.weatherforeveryone.database.LocationDatabase
 import com.gekaradchenko.weatherforeveryone.databinding.FragmentLocationsBinding
 
 
-const val PACKAGE = "package"
-const val FRAGMENT_STRING = ""
+private const val PACKAGE = "package"
+private const val FRAGMENT_STRING = ""
 
 class LocationsFragment : Fragment() {
 
@@ -36,9 +36,8 @@ class LocationsFragment : Fragment() {
         val binding: FragmentLocationsBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_locations, container, false)
 
-        val application = requireNotNull(this.activity).application
+        val application = requireActivity().application
         val dataSource = LocationDatabase.getInstance(application).locationDao
-
         val viewModelFactory = LocationsViewModelFactory(dataSource, application)
 
 

@@ -9,13 +9,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.gekaradchenko.weatherforeveryone.R
-import com.gekaradchenko.weatherforeveryone.databinding.CustomDialogBinding
 import com.gekaradchenko.weatherforeveryone.databinding.FragmentPage1Binding
-import com.gekaradchenko.weatherforeveryone.viewpager.ViewPagerViewModel
 
 
 class Page1Fragment : Fragment() {
@@ -34,6 +31,7 @@ class Page1Fragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(PageViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
+
 
         val viewPager2 = requireActivity().findViewById<ViewPager2>(R.id.viewPager2)
 

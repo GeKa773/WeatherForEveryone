@@ -21,7 +21,6 @@ import com.google.android.gms.maps.SupportMapFragment
 class AddLocationMapFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private var mapReady = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,21 +53,6 @@ class AddLocationMapFragment : Fragment(), OnMapReadyCallback {
         }
 
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

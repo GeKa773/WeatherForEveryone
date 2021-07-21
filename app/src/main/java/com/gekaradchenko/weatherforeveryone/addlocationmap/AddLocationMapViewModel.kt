@@ -51,8 +51,6 @@ class AddLocationMapViewModel(val data: LocationDao, application: Application) :
                     insertDatabase(addressList.first().latitude, addressList.first().longitude)
                     onNavigateClick()
 
-                    Log.i("AddLocationMapViewModel",
-                        " lat: ${addressList.first().latitude}; \n lon: ${addressList.first().longitude}")
                 } catch (t: Throwable) {
                     Log.d("AddLocationMapViewModel", "getLatLng problem: ${t.message}")
                 }

@@ -27,7 +27,6 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
 
     fun onNavigateClick() {
         _navigationEvent.postValue(
-
             WeekWeatherFragmentDirections.actionWeekWeatherFragmentToWeatherViewPagerFragment()
         )
     }
@@ -45,7 +44,6 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
         get() = _location
 
     init {
-
         getWeekWeatherReal()
     }
 

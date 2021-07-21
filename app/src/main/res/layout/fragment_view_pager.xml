@@ -5,9 +5,6 @@
 
     <data>
 
-        <variable
-            name="viewModel"
-            type="com.gekaradchenko.weatherforeveryone.viewpager.ViewPagerViewModel" />
 
     </data>
 

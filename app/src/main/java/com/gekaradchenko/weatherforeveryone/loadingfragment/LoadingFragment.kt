@@ -28,7 +28,6 @@ class LoadingFragment : Fragment() {
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
 
         binding.fragmentContainerView.setOnClickListener {
-
             viewModel.onNavigateClick()
         }
 

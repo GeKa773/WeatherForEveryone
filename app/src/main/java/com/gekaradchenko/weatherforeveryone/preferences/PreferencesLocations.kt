@@ -3,12 +3,12 @@ package com.gekaradchenko.weatherforeveryone.preferences
 import android.content.Context
 import android.content.SharedPreferences
 
-const val PREFERENCE_LOCATION = "default_locations"
-const val PREFERENCE_LAT = "default_lat"
-const val PREFERENCE_LON = "default_lon"
+private const val PREFERENCE_LOCATION = "default_locations"
+private const val PREFERENCE_LAT = "default_lat"
+private const val PREFERENCE_LON = "default_lon"
 
-const val KIEV_LAT = 50.4547f
-const val KIEV_LON = 30.5238f
+private const val KIEV_LAT = 50.4547f
+private const val KIEV_LON = 30.5238f
 
 class PreferencesLocations(context: Context) {
     private val sharedLocations: SharedPreferences =
@@ -42,8 +42,5 @@ class PreferencesLocations(context: Context) {
         editor.putFloat(PREFERENCE_LAT, floatLat)
         editor.putFloat(PREFERENCE_LON, floatLon)
         editor.apply()
-
     }
-
-
 }

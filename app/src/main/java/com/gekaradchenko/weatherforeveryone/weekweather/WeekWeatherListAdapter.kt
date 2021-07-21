@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gekaradchenko.weatherforeveryone.databinding.WeekWeatherRecyclerViewItemBinding
 
-class WeekWeatherListAdapter(val clickListener: WeekWeatherListener) :
+class WeekWeatherListAdapter(private val clickListener: WeekWeatherListener) :
     ListAdapter<WeekWeather, WeekWeatherListAdapter.WeekWeatherViewHolder>(DiffCallback) {
 
     class WeekWeatherViewHolder(private var binding: WeekWeatherRecyclerViewItemBinding) :

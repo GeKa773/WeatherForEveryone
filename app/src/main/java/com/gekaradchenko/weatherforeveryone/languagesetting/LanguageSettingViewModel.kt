@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class LanguageSettingViewModel(application: Application) : AndroidViewModel(application) {
 
     val app = application
-    val shared = PreferencesSetting(app)
+    private val shared = PreferencesSetting(app)
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 

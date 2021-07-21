@@ -13,8 +13,6 @@ import com.gekaradchenko.weatherforeveryone.preferences.PreferencesLocations
 import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragmentDirections
 import kotlinx.coroutines.*
 
-const val LAT = 50.4547
-const val LON = 30.5238
 const val EXCLUDE = "daily"
 const val APPID_KEY = "92d56959b946a47f9ad21b1c5c911179"
 
@@ -77,10 +75,7 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
         getWeatherReal()
     }
 
-
     private fun getWeatherReal() {
-
-
         coroutineScope.launch {
             val lat: Double
             val lon: Double

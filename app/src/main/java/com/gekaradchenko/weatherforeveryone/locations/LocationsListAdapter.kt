@@ -9,7 +9,7 @@ import com.gekaradchenko.weatherforeveryone.databinding.LocationsRecyclerViewIte
 import com.gekaradchenko.weatherforeveryone.weekweather.WeekWeather
 import com.gekaradchenko.weatherforeveryone.weekweather.WeekWeatherListener
 
-class LocationsListAdapter(val clickListener: LocationsListener) :
+class LocationsListAdapter(private val clickListener: LocationsListener) :
     ListAdapter<LocationsForecast, LocationsListAdapter.LocationsViewHolder>(DiffCallback) {
 
     class LocationsViewHolder(private var binding: LocationsRecyclerViewItemBinding) :
@@ -48,9 +48,7 @@ class LocationsListAdapter(val clickListener: LocationsListener) :
             return oldItem.id == newItem.id
         }
 
-
     }
-
 
 }
 

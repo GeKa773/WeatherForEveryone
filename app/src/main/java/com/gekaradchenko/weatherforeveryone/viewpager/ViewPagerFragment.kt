@@ -23,43 +23,11 @@ class ViewPagerFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentViewPagerBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_view_pager, container, false)
-        val viewModel = ViewModelProvider(this).get(ViewPagerViewModel::class.java)
 
         val adapter = ViewPagerAdapter(parentFragmentManager, lifecycle)
 
         binding.viewPager2.adapter = adapter
 
-
-
-
-//
-//        viewModel.moveNext.observe(viewLifecycleOwner, Observer {
-//            when (it) {
-//                0 -> {
-//                    binding.viewPager2.isUserInputEnabled = false
-//
-//                }
-//                1 -> {
-//                    binding.viewPager2.currentItem = 1
-//                    binding.viewPager2.isUserInputEnabled = false
-//                    viewModel.onMoveNextCompleted()
-//                }
-//                2 -> {
-//                    binding.viewPager2.currentItem = 2
-//                    binding.viewPager2.isUserInputEnabled = false
-//                    viewModel.onMoveNextCompleted()
-//                }
-//                3 -> {
-//                    Toast.makeText(context, "ffffff", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        })
-
-
-
-
         return binding.root
     }
-
-
 }

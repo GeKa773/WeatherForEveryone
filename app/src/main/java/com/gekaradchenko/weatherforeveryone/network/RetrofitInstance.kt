@@ -10,6 +10,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
+private const val ONECALL = "onecall"
+private const val LAT = "lat"
+private const val LON = "lon"
+private const val EXCLUDE = "exclude"
+private const val APPID = "appid"
 
 
 private val moshi = Moshi.Builder()
@@ -24,12 +29,12 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface WeatherApiService {
-    @GET("onecall")
+    @GET(ONECALL)
     fun getWeather(
-        @Query("lat") lat: Double,
-        @Query("lon") lon: Double,
-        @Query("exclude") exclude: String,
-        @Query("appid") appid: String
+        @Query(LAT) lat: Double,
+        @Query(LON) lon: Double,
+        @Query(EXCLUDE) exclude: String,
+        @Query(APPID) appid: String
     ):
             Deferred<WeatherModel>
 }

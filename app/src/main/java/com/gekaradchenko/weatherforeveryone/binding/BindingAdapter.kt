@@ -18,7 +18,6 @@ const val TIME_FORMAT = "HH:mm"
 @BindingAdapter("setTemp")
 fun TextView.setTemp(temp: Double) {
     val t = temp - TEMP
-
     val stringTemp = String.format(FORMAT, t)
     text = if (t > 0) "+$stringTemp" else stringTemp
 }
@@ -28,7 +27,6 @@ fun TextView.setString(string: String?) {
     string?.let {
         text = "$string"
     }
-
 }
 
 @BindingAdapter("setDataToday")
@@ -156,22 +154,18 @@ fun Button.setEnable(b: Boolean?) {
 @BindingAdapter("app:goneUnless")
 fun goneUnless(view: View, visible: Boolean) {
     view.visibility = if (visible) View.VISIBLE else View.GONE
-
 }
 
 @BindingAdapter("app:switchChecked")
 fun switchChecked(view: Switch, checked: Boolean) {
     if (!checked) {
-
         view.isChecked = false
     }
-
 }
 
 @BindingAdapter("app:switchCheckedShowAlert")
 fun switchCheckedShowAlert(view: Switch, checked: Boolean) {
     view.isChecked = checked
-
 }
 
 
