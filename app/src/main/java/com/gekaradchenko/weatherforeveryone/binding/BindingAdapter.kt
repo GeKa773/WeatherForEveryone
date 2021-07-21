@@ -159,6 +159,15 @@ fun goneUnless(view: View, visible: Boolean) {
 
 @BindingAdapter("app:switchChecked")
 fun switchChecked(view: Switch, checked: Boolean) {
+    if (!checked) {
+
+        view.isChecked = false
+    }
+
+}
+
+@BindingAdapter("app:switchCheckedShowAlert")
+fun switchCheckedShowAlert(view: Switch, checked: Boolean) {
     view.isChecked = checked
 
 }

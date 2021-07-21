@@ -2,7 +2,9 @@ package com.gekaradchenko.weatherforeveryone.viewpager.pagefragments
 
 import android.app.Application
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
@@ -27,6 +29,53 @@ class PageViewModel(application: Application) : AndroidViewModel(application) {
     fun onNavigateEventComplete() {
         _navigationEvent.value = false
     }
+
+    private val _toastShow = SingleLiveEvent<String>()
+    val toastShow: LiveData<String>
+        get() = _toastShow
+
+    private val _dialogShow = SingleLiveEvent<Boolean>()
+    val dialogShow: LiveData<Boolean>
+        get() = _dialogShow
+
+
+    fun onShowDialog() {
+        _dialogShow.postValue(true)
+    }
+
+     fun showToastPrivetPolicy() {
+        _toastShow.postValue(app.getString(R.string.privacy_policy))
+    }
+
+     fun showToastTermOfUsing() {
+        _toastShow.postValue(app.getString(R.string.term_of_using))
+    }
+
+
+
+    // !!! ??? !!!
+//    fun showCustomDialog(context: Context) {
+//
+//        val dialog = Dialog(context)
+//        dialog.setContentView(R.layout.custom_dialog)
+//        dialog.window!!.setLayout(
+//            ViewGroup.LayoutParams.MATCH_PARENT,
+//            ViewGroup.LayoutParams.WRAP_CONTENT
+//        )
+//        dialog.setCancelable(true)
+//        val dialogPrivateButton = dialog.findViewById<Button>(R.id.dialogPrivateButton)
+//        val dialogTermButton = dialog.findViewById<Button>(R.id.dialogTermButton)
+//        dialogPrivateButton.setOnClickListener {
+//            showToastPrivetPolicy()
+//            dialog.cancel()
+//        }
+//
+//        dialogTermButton.setOnClickListener {
+//            showToastTermOfUsing()
+//            dialog.cancel()
+//        }
+//        dialog.show()
+//    }
 
 
 }

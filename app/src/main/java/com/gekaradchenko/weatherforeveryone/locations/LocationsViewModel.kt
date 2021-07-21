@@ -48,6 +48,11 @@ class LocationsViewModel(data: LocationDao, application: Application) :
         get() = _list
 
 
+    private val _toastShow = SingleLiveEvent<String>()
+    val toastShow: LiveData<String>
+        get() = _toastShow
+
+
     val locations = dataBase.getAllLocation()
 
 
@@ -107,24 +112,13 @@ class LocationsViewModel(data: LocationDao, application: Application) :
 
     }
 
-    private fun updateActivity(){
-//        requireActivity().supportFragmentManager.beginTransaction().detach(this).commit()
-
-    }
-
-
-    //
-    // Правильный показ тостов
-    //
 
     fun myCheckPermission() {
         Dexter.withContext(app).withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
                     _permissionBoolean.value = true
-                    Toast.makeText(app,
-                        app.getString(R.string.toast_permission_granted),
-                        Toast.LENGTH_SHORT).show()
+                    _toastShow.postValue(app.getString(R.string.toast_permission_granted))
                 }
 
                 override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {

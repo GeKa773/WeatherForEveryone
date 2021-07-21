@@ -7,6 +7,7 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -44,7 +45,17 @@ class LocationsFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this, viewModelFactory).get(LocationsViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
+
+        val adapter = LocationsListAdapter(LocationsListener {
+            viewModel.saveLocationsToShared(it)
+            startActivity(Intent(requireContext(), WeatherActivity::class.java))
+
+        })
+
+
+
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
+        viewModel.toastShow.observe(viewLifecycleOwner, ::showToast)
 
         viewModel.permissionBoolean.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -61,17 +72,15 @@ class LocationsFragment : Fragment() {
 
         })
 
+        binding.locationRecyclerview.adapter = adapter
+
+
+
         binding.locationButton.setOnClickListener {
             viewModel.myCheckPermission()
         }
 
-        val adapter = LocationsListAdapter(LocationsListener {
-            viewModel.saveLocationsToShared(it)
-            startActivity(Intent(requireContext(), WeatherActivity::class.java))
 
-        })
-
-        binding.locationRecyclerview.adapter = adapter
 
         viewModel.list.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
@@ -81,6 +90,8 @@ class LocationsFragment : Fragment() {
             viewModel.getLocationsWeatherReal()
 
         })
+
+
 
         val itemTouchHelperCallbacks = object :
             ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
@@ -108,11 +119,11 @@ class LocationsFragment : Fragment() {
 
 
 
-
-
-
-
         return binding.root
+    }
+
+    private fun showToast(s: String) {
+        Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show()
     }
 
     private fun navigate(navDirections: NavDirections) {
