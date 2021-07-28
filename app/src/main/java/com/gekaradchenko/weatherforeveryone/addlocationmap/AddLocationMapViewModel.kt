@@ -21,43 +21,36 @@ class AddLocationMapViewModel(val data: LocationDao, application: Application) :
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 
+    val model = FragmentAddLocationModel()
+
     private val _navigationEvent = SingleLiveEvent<NavDirections>()
     val navigationEvent: LiveData<NavDirections> = _navigationEvent
+    private val _addLocationEvent = SingleLiveEvent<String>()
+    val addLocationEvent: LiveData<String> = _addLocationEvent
 
-   private fun onNavigateClick() {
+    private fun onNavigateClick() {
         _navigationEvent.postValue(
             AddLocationMapFragmentDirections.actionAddLocationMapFragmentToWeatherViewPagerFragment()
         )
     }
 
-
-    private val _city = MutableLiveData<String>()
-    val city: LiveData<String>
-        get() = _city
-
-    fun setCityValue(city: String?) {
-        _city.value = city
+    fun onClickButtonEvent() {
+        _addLocationEvent.value = model.city
     }
-
 
     fun getLatLng() {
 
-        city.value?.let {
+        addLocationEvent.value?.let {
             coroutineScope.launch {
-
                 try {
-
                     val addressList = getAddressList(it)
                     insertDatabase(addressList.first().latitude, addressList.first().longitude)
                     onNavigateClick()
-
                 } catch (t: Throwable) {
                     Log.d("AddLocationMapViewModel", "getLatLng problem: ${t.message}")
                 }
             }
-
         }
-
     }
 
     private suspend fun getAddressList(city: String): List<Address> {

@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.gekaradchenko.weatherforeveryone.addlocationmap.AddLocationMapViewModel" />
 
     </data>
 
@@ -29,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fragment_add_location_map_margin"
             android:hint="@string/usa_hint"
+            android:text="@={viewModel.model.city}"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,16 +40,15 @@
 
         <fragment
             android:id="@+id/containerMap"
-            android:layout_width="0dp"
             android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/fragment_add_location_map_mapcontainer_margin"
             android:background="@drawable/border_for_map"
             app:layout_constraintBottom_toTopOf="@+id/addLocationButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameCityEditText"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/nameCityEditText" />
 
         <Button
             android:id="@+id/addLocationButton"
@@ -56,6 +59,7 @@
             android:layout_marginEnd="@dimen/fragment_add_locations_map_margin_button_start_end"
             android:layout_marginBottom="@dimen/fragment_add_location_map_margin"
             android:background="@drawable/button_background"
+            android:onClick="@{()->viewModel.onClickButtonEvent()}"
             android:text="@string/add_location"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toTopOf="@+id/addLocationTextView"
@@ -67,6 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/fragment_add_location_map_margin"
+
+
             android:text="@string/swipe_to_remove"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintBottom_toBottomOf="parent"

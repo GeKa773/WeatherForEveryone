@@ -16,6 +16,7 @@ import com.gekaradchenko.weatherforeveryone.databinding.FragmentAddLocationMapBi
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.material.snackbar.Snackbar
 
 
 class AddLocationMapFragment : Fragment(), OnMapReadyCallback {
@@ -39,27 +40,22 @@ class AddLocationMapFragment : Fragment(), OnMapReadyCallback {
         val viewModel =
             ViewModelProvider(this, viewModelFactory).get(AddLocationMapViewModel::class.java)
 
+        binding.viewModel = viewModel
+
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.containerMap) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-
-        viewModel.city.observe(viewLifecycleOwner, Observer {
-            viewModel.getLatLng()
-        })
-
-        binding.addLocationButton.setOnClickListener {
-            viewModel.setCityValue(binding.nameCityEditText.text.toString())
-        }
-
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
 
-
-
-
+        viewModel.addLocationEvent.observe(viewLifecycleOwner) {
+            viewModel.getLatLng()
+            showSnackBar(viewModel.addLocationEvent.value.toString())
+        }
 
         return binding.root
     }
+
 
     private fun navigate(navDirections: NavDirections) {
         findNavController().navigate(navDirections)
@@ -69,6 +65,11 @@ class AddLocationMapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(view ?: return, "Your city is : $message", Snackbar.LENGTH_SHORT)
+            .show()
     }
 
 

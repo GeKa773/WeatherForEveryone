@@ -14,7 +14,7 @@ import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFra
 import kotlinx.coroutines.*
 
 const val EXCLUDE = "daily"
-const val APPID_KEY = "92d56959b946a47f9ad21b1c5c911179"
+const val APPID_KEY = "a479ae562a94cafa121cb9a3c48684bb"
 
 
 class TodayWeatherViewModel(application: Application) : AndroidViewModel(application) {
