@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.gekaradchenko.weatherforeveryone.viewpager.pagefragments.PageViewModel" />
 
     </data>
 
@@ -64,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/page_fragment_margin"
             android:text="@string/next_tip"
+            android:onClick="@{()->viewModel.onPageEvent()}"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

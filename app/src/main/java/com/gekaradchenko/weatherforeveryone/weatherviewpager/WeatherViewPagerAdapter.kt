@@ -19,10 +19,8 @@ class WeatherViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifec
         SettingFragment()
     )
 
-
     override fun getItemCount(): Int {
         return fragmentArray.size
-
     }
 
     override fun createFragment(position: Int): Fragment {

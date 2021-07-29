@@ -40,21 +40,15 @@ class LocationsViewModel(data: LocationDao, application: Application) :
     private val shared = PreferencesLocations(app)
 
     private val _permissionBoolean = MutableLiveData<Boolean>()
-    val permissionBoolean: LiveData<Boolean>
-        get() = _permissionBoolean
+    val permissionBoolean: LiveData<Boolean> = _permissionBoolean
 
     private val _list = MutableLiveData<List<LocationsForecast>>()
-    val list: LiveData<List<LocationsForecast>>
-        get() = _list
-
+    val list: LiveData<List<LocationsForecast>> = _list
 
     private val _toastShow = SingleLiveEvent<String>()
-    val toastShow: LiveData<String>
-        get() = _toastShow
-
+    val toastShow: LiveData<String> = _toastShow
 
     val locations = dataBase.getAllLocation()
-
 
     fun getLocationsWeatherReal() {
         coroutineScope.launch {
@@ -87,10 +81,7 @@ class LocationsViewModel(data: LocationDao, application: Application) :
                     }
                 }
                 _list.value = locationsArray
-
             }
-
-
         }
     }
 
@@ -140,10 +131,8 @@ class LocationsViewModel(data: LocationDao, application: Application) :
         )
     }
 
-
     fun deleteLocationFromBD(id: Long) {
         coroutineScope.launch {
-
             withContext(Dispatchers.IO) {
                 dataBase.deleteLocationById(id)
             }
@@ -151,6 +140,9 @@ class LocationsViewModel(data: LocationDao, application: Application) :
 
     }
 
+    fun showToastPermissionNotFound() {
+        _toastShow.postValue(app.getString(R.string.permission_not_found))
+    }
 
     override fun onCleared() {
         super.onCleared()

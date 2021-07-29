@@ -16,11 +16,9 @@ private const val LON = "lon"
 private const val EXCLUDE = "exclude"
 private const val APPID = "appid"
 
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
-
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))

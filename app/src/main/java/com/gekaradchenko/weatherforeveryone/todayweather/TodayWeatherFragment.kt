@@ -14,27 +14,26 @@ import com.gekaradchenko.weatherforeveryone.databinding.FragmentTodayWeatherBind
 
 
 class TodayWeatherFragment : Fragment() {
-    private val viewModel: TodayWeatherViewModel by lazy {
-        ViewModelProvider(this).get(TodayWeatherViewModel::class.java)
-    }
-
+    private lateinit var binding: FragmentTodayWeatherBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
 
-        val binding: FragmentTodayWeatherBinding =
+        binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_today_weather, container, false)
+        val application = requireNotNull(this.activity).application
 
-        viewModel.navigationEvent.observe(viewLifecycleOwner,::navigate)
+        val viewModelFactory = TodayWeatherFactory(application)
 
-        binding.todayWeatherFragment.setOnClickListener {
-            viewModel.onNavigateClick()
-        }
+        val viewModel =
+            ViewModelProvider(this, viewModelFactory).get(TodayWeatherViewModel::class.java)
+
+        viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
+
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
 
         return binding.root
     }

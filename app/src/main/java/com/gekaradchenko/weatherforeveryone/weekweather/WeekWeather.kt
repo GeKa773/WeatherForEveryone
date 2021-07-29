@@ -1,7 +1,5 @@
 package com.gekaradchenko.weatherforeveryone.weekweather
 
-import java.util.*
-
 class WeekWeather(
     var id: Int,
     var weatherId: Int,

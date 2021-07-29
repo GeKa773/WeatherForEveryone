@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="viewModel"
-    type="com.gekaradchenko.weatherforeveryone.weekweather.WeekWeatherViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.gekaradchenko.weatherforeveryone.weekweather.WeekWeatherViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/weekWeatherFragment"
+        android:layout_width="match_parent"
+        android:onClick="@{()->viewModel.onNavigateClick()}"
+        android:layout_height="match_parent"
         tools:context=".weekweather.WeekWeatherFragment">
 
 

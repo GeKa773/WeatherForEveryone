@@ -17,7 +17,6 @@ class PreferencesSetting(context: Context) {
     private val editor: SharedPreferences.Editor =
         context.getSharedPreferences(PREFERENCES_SETTING, Context.MODE_PRIVATE).edit()
 
-
     suspend fun getDefaultLanguage(): String =
         sharedSetting.getString(LOCAL_SETTING, ENG).toString()
 

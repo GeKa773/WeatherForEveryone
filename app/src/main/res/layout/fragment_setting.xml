@@ -31,6 +31,7 @@
             android:id="@+id/nightModeSettingSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.savaNightModeShared()}"
             android:layout_marginStart="@dimen/fragment_setting_text_margin"
             app:layout_constraintBottom_toTopOf="@+id/notificationsSettingTextView"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +77,8 @@
                     android:id="@+id/settingSwitch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onCheckedChanged="@{(switch, cheked) ->viewModel.isShowOtherSwitch(cheked)}" />
 
                 <TextView
                     android:id="@+id/settingFoSwitchTextView1"
@@ -98,6 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onCheckedChanged="@{(switch, cheked) ->viewModel.isEnableVeryHot(cheked)}"
                     app:switchChecked="@{viewModel.showAlerts}" />
 
                 <TextView
@@ -120,6 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onCheckedChanged="@{(switch, cheked) ->viewModel.isEnabledSnow(cheked)}"
                     app:switchChecked="@{viewModel.showAlerts}" />
 
                 <TextView
@@ -142,6 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onCheckedChanged="@{(switch, cheked) ->viewModel.isEnabledHot(cheked)}"
                     app:switchChecked="@{viewModel.showAlerts}" />
 
                 <TextView

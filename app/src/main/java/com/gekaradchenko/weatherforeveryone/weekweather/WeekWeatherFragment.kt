@@ -17,9 +17,6 @@ import com.gekaradchenko.weatherforeveryone.todayweather.TodayWeatherViewModel
 
 
 class WeekWeatherFragment : Fragment() {
-    private val viewModel: WeekWeatherViewModel by lazy {
-        ViewModelProvider(this).get(WeekWeatherViewModel::class.java)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,18 +26,18 @@ class WeekWeatherFragment : Fragment() {
         val binding: FragmentWeekWeatherBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_week_weather, container, false)
 
+        val application = requireNotNull(this.activity).application
+        val viewModelFactory = WeekWeatherFactory(application)
+        val viewModel =
+            ViewModelProvider(this, viewModelFactory).get(WeekWeatherViewModel::class.java)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        
+
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
 
         val adapter = WeekWeatherListAdapter(WeekWeatherListener {
             viewModel.onNavigateClick()
         })
-
-        binding.weekWeatherFragment.setOnClickListener {
-            viewModel.onNavigateClick()
-        }
 
         binding.weekRecyclerView.adapter = adapter
 
@@ -48,13 +45,10 @@ class WeekWeatherFragment : Fragment() {
             adapter.submitList(it)
         })
 
-
         return binding.root
     }
 
     private fun navigate(navDirections: NavDirections) {
         findNavController().navigate(navDirections)
     }
-
-
 }

@@ -25,50 +25,43 @@ class TodayWeatherViewModel(application: Application) : AndroidViewModel(applica
 
     private val shared = PreferencesLocations(app)
 
-
     private val _navigationEvent = SingleLiveEvent<NavDirections>()
     val navigationEvent: LiveData<NavDirections> = _navigationEvent
+
+
+    private val _timeZone = MutableLiveData<String>()
+    val timeZone: LiveData<String> = _timeZone
+
+    private val _dayToday = MutableLiveData<String>()
+    val dayToday: LiveData<String> = _dayToday
+
+    private val _location = MutableLiveData<String>()
+    val location: LiveData<String> = _location
+
+    private val _temp = MutableLiveData<Double>()
+    val temp: LiveData<Double> = _temp
+
+    private val _iconId = MutableLiveData<Int>()
+    val iconId: LiveData<Int> = _iconId
+
+    private val _iconTimeZone = MutableLiveData<Double>()
+    val iconTimeZone: LiveData<Double> = _iconTimeZone
+
+    private val _humid = MutableLiveData<Double>()
+    val humid: LiveData<Double> = _humid
+
+    private val _wildSpeed = MutableLiveData<Double>()
+    val wildSpeed: LiveData<Double> = _wildSpeed
+
+    private val _timeNow = MutableLiveData<String>()
+    val timeNow: LiveData<String> = _timeNow
+
 
     fun onNavigateClick() {
         _navigationEvent.postValue(
             WeatherViewPagerFragmentDirections.actionWeatherViewPagerFragmentToWeekWeatherFragment()
         )
     }
-
-    private val _timeZone = MutableLiveData<String>()
-    val timeZone: LiveData<String>
-        get() = _timeZone
-
-    private val _dayToday = MutableLiveData<String>()
-    val dayToday: LiveData<String>
-        get() = _dayToday
-
-    private val _location = MutableLiveData<String>()
-    val location: LiveData<String>
-        get() = _location
-
-    private val _temp = MutableLiveData<Double>()
-    val temp: LiveData<Double>
-        get() = _temp
-
-    private val _iconId = MutableLiveData<Int>()
-    val iconId: LiveData<Int>
-        get() = _iconId
-
-    private val _iconTimeZone = MutableLiveData<Double>()
-    val iconTimeZone: LiveData<Double>
-        get() = _iconTimeZone
-
-    private val _humid = MutableLiveData<Double>()
-    val humid: LiveData<Double>
-        get() = _humid
-
-    private val _wildSpeed = MutableLiveData<Double>()
-    val wildSpeed: LiveData<Double>
-        get() = _wildSpeed
-    private val _timeNow = MutableLiveData<String>()
-    val timeNow: LiveData<String>
-        get() = _timeNow
 
     init {
 

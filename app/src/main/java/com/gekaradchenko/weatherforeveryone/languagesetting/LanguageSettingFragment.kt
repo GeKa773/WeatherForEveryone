@@ -12,6 +12,7 @@ import com.gekaradchenko.weatherforeveryone.MainActivity
 import com.gekaradchenko.weatherforeveryone.R
 import com.gekaradchenko.weatherforeveryone.databinding.FragmentLanguageSettingBinding
 
+
 class LanguageSettingFragment : Fragment() {
 
     override fun onCreateView(
@@ -33,11 +34,11 @@ class LanguageSettingFragment : Fragment() {
             restartApp()
         }
 
+
         return binding.root
     }
 
     private fun restartApp() {
         startActivity(Intent(requireContext(), MainActivity::class.java))
     }
-
 }

@@ -1,9 +1,7 @@
 package com.gekaradchenko.weatherforeveryone.locations
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +16,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.gekaradchenko.weatherforeveryone.R
 import com.gekaradchenko.weatherforeveryone.WeatherActivity
-import com.gekaradchenko.weatherforeveryone.addlocationmap.AddLocationMapViewModelFactory
 import com.gekaradchenko.weatherforeveryone.database.LocationDatabase
 import com.gekaradchenko.weatherforeveryone.databinding.FragmentLocationsBinding
 
@@ -40,18 +37,15 @@ class LocationsFragment : Fragment() {
         val dataSource = LocationDatabase.getInstance(application).locationDao
         val viewModelFactory = LocationsViewModelFactory(dataSource, application)
 
-
         val viewModel =
             ViewModelProvider(this, viewModelFactory).get(LocationsViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
         val adapter = LocationsListAdapter(LocationsListener {
             viewModel.saveLocationsToShared(it)
             startActivity(Intent(requireContext(), WeatherActivity::class.java))
-
         })
-
-
 
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
         viewModel.toastShow.observe(viewLifecycleOwner, ::showToast)
@@ -61,11 +55,12 @@ class LocationsFragment : Fragment() {
                 if (it) {
                     viewModel.onNavigateClick()
                 } else {
-                    val intent = Intent()
-                    intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                    intent.data =
-                        Uri.fromParts(PACKAGE, requireActivity().packageName, FRAGMENT_STRING)
-                    startActivity(intent)
+//                    val intent = Intent()
+//                    intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+//                    intent.data =
+//                        Uri.fromParts(PACKAGE, requireActivity().packageName, FRAGMENT_STRING)
+//                    startActivity(intent)
+                    viewModel.showToastPermissionNotFound()
                 }
             }
 
@@ -73,24 +68,12 @@ class LocationsFragment : Fragment() {
 
         binding.locationRecyclerview.adapter = adapter
 
-
-
-        binding.locationButton.setOnClickListener {
-            viewModel.myCheckPermission()
-        }
-
-
-
         viewModel.list.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
-
         viewModel.locations.observe(viewLifecycleOwner, Observer {
             viewModel.getLocationsWeatherReal()
-
         })
-
-
 
         val itemTouchHelperCallbacks = object :
             ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
@@ -115,14 +98,11 @@ class LocationsFragment : Fragment() {
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallbacks)
         itemTouchHelper.attachToRecyclerView(binding.locationRecyclerview)
 
-
-
-
         return binding.root
     }
 
-    private fun showToast(s: String) {
-        Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show()
+    private fun showToast(massage: String) {
+        Toast.makeText(requireContext(), massage, Toast.LENGTH_SHORT).show()
     }
 
     private fun navigate(navDirections: NavDirections) {

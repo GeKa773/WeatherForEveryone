@@ -21,7 +21,6 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
     private val shared = PreferencesLocations(app)
 
-
     private val _navigationEvent = SingleLiveEvent<NavDirections>()
     val navigationEvent: LiveData<NavDirections> = _navigationEvent
 
@@ -32,16 +31,13 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     private val _list = MutableLiveData<List<WeekWeather>>()
-    val list: LiveData<List<WeekWeather>>
-        get() = _list
+    val list: LiveData<List<WeekWeather>> = _list
 
     private val _timeZone = MutableLiveData<String>()
-    val timeZone: LiveData<String>
-        get() = _timeZone
+    val timeZone: LiveData<String> = _timeZone
 
     private val _location = MutableLiveData<String>()
-    val location: LiveData<String>
-        get() = _location
+    val location: LiveData<String> = _location
 
     init {
         getWeekWeatherReal()
@@ -63,7 +59,7 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
             )
 
             try {
-                var result = getWeatherDeferred.await()
+                val result = getWeatherDeferred.await()
                 val listWeather = ArrayList<WeekWeather>()
 
                 _timeZone.value = result.timezone
@@ -80,13 +76,11 @@ class WeekWeatherViewModel(application: Application) : AndroidViewModel(applicat
                 }
                 _list.value = listWeather
 
-
             } catch (t: Throwable) {
                 Log.d("TodayWeatherViewModel", "getWeatherReal: ${t.message}")
             }
         }
     }
-
 
     override fun onCleared() {
         super.onCleared()

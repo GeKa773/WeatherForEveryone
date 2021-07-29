@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -25,62 +26,31 @@ class SettingFragment : Fragment() {
 
         val binding: FragmentSettingBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_setting, container, false)
+        val application = requireActivity().application
 
-        val viewModel = ViewModelProvider(this).get(SettingViewModel::class.java)
-        binding.lifecycleOwner = viewLifecycleOwner
+        val viewModelFactory = SettingFragmentFactory(application)
+
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(SettingViewModel::class.java)
 
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
 
         binding.languageSettingTextView.setOnClickListener {
             viewModel.onNavigateClick()
         }
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-
-        binding.nightModeSettingSwitch.setOnCheckedChangeListener { _, isChecked ->
-//            viewModel.savaModeShared(isChecked)
-//
-            //Exception here !!!
-//            viewModel.modeSet(isChecked)
-
-        }
-
-        binding.nightModeSettingSwitch.setOnClickListener {
-            viewModel.savaTooModeShared()
-
-            //then do it
-
-            startActivity(Intent(requireContext(), MainActivity::class.java))
-            requireActivity().finishAffinity()
-        }
-
-
-
-        binding.settingSwitch1.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setShowAlerts(isChecked)
-        }
-
-        binding.settingSwitch2.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setVeryHot(isChecked)
-        }
-
-        binding.settingSwitch3.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setSnow(isChecked)
-        }
-
-        binding.settingSwitch4.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setHot(isChecked)
-        }
-
-
-
+        viewModel.toastShow.observe(viewLifecycleOwner, ::showToast)
 
         return binding.root
     }
 
     private fun navigate(navDirections: NavDirections) {
         findNavController().navigate(navDirections)
+    }
 
+    private fun showToast(massage: String) {
+        Toast.makeText(requireContext(), massage, Toast.LENGTH_SHORT).show()
     }
 
 

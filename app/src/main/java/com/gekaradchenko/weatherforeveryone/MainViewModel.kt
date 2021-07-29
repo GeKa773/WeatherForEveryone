@@ -18,12 +18,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val _language = MutableLiveData<String>()
-    val language: LiveData<String>
-        get() = _language
+    val language: LiveData<String> = _language
 
     private val _modeNight = MutableLiveData<Boolean>()
-    val modeNight: LiveData<Boolean>
-        get() = _modeNight
+    val modeNight: LiveData<Boolean> = _modeNight
 
     init {
         setSetting()
@@ -35,12 +33,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             _modeNight.value = shared.getDefaultMode()
         }
     }
-    fun modeSet(mode:Boolean){
-        if (mode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+
+    fun modeSet(mode: Boolean) {
+        if (mode) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
     }
 
 

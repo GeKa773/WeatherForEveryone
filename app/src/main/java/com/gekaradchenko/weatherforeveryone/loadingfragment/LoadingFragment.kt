@@ -23,13 +23,14 @@ class LoadingFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentLoadingBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_loading, container, false)
-        val viewModel = ViewModelProvider(this).get(LoadingViewModel::class.java)
+
+        val viewModelFactory = LoadingFragmentFactory()
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(LoadingViewModel::class.java)
+
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
-
-        binding.fragmentContainerView.setOnClickListener {
-            viewModel.onNavigateClick()
-        }
 
         return binding.root
     }
@@ -37,6 +38,5 @@ class LoadingFragment : Fragment() {
     private fun navigate(navDirections: NavDirections) {
         findNavController().navigate(navDirections)
     }
-
 
 }

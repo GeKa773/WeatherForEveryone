@@ -17,7 +17,6 @@ class WeekWeatherListAdapter(private val clickListener: WeekWeatherListener) :
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekWeatherViewHolder {
@@ -27,10 +26,7 @@ class WeekWeatherListAdapter(private val clickListener: WeekWeatherListener) :
 
     override fun onBindViewHolder(holder: WeekWeatherViewHolder, position: Int) {
         holder.bind(getItem(position), clickListener)
-
-
     }
-
 
     private companion object DiffCallback : DiffUtil.ItemCallback<WeekWeather>() {
         override fun areItemsTheSame(oldItem: WeekWeather, newItem: WeekWeather): Boolean {
@@ -40,13 +36,9 @@ class WeekWeatherListAdapter(private val clickListener: WeekWeatherListener) :
         override fun areContentsTheSame(oldItem: WeekWeather, newItem: WeekWeather): Boolean {
             return oldItem.id == newItem.id
         }
-
     }
-
-
 }
 
 class WeekWeatherListener(val clickListener: (weatherId: Int) -> Unit) {
     fun onClick(weekWeather: WeekWeather) = clickListener(weekWeather.id)
-
 }

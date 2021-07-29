@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.gekaradchenko.weatherforeveryone.locations.LocationsViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,6 +37,7 @@
             android:layout_marginEnd="@dimen/fragment_locations_margin_button_start_end"
             android:layout_marginBottom="@dimen/fragment_locations_margin_button_top_bot"
             android:background="@drawable/button_background"
+            android:onClick="@{()-> viewModel.myCheckPermission()}"
             android:text="@string/add_location"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toTopOf="@+id/locationTextView"

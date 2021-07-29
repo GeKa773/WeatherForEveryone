@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.gekaradchenko.weatherforeveryone.viewpager.pagefragments.PageViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,6 +66,7 @@
             android:layout_width="@dimen/page_fragment_button_width"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/page_fragment_margin"
+            android:onClick="@{()->viewModel.onPageEvent()}"
             android:text="@string/next_tip"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -74,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/page_fragment_margin"
             android:text="@string/by_android_team"
+            android:onClick="@{()->viewModel.onShowDialog()}"
             android:textColor="@color/android_team"
             android:textSize="@dimen/page_fragment_text_size"
             android:textStyle="bold"
