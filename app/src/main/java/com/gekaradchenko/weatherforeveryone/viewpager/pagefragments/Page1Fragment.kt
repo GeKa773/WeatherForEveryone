@@ -33,7 +33,6 @@ class Page1Fragment : Fragment() {
         bindingViewPage =
             DataBindingUtil.inflate(inflater, R.layout.fragment_view_pager, container, false)
 
-
         val application = requireNotNull(this.activity).application
 
         val viewModelFactory = PageFragmentFactory(application)
@@ -41,7 +40,6 @@ class Page1Fragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         bindingViewPage.lifecycleOwner = viewLifecycleOwner
-
 
         val viewPager2 = requireActivity().findViewById<ViewPager2>(R.id.viewPager2)
 
@@ -52,10 +50,8 @@ class Page1Fragment : Fragment() {
             viewPager2.currentItem = 1
         }
 
-
         viewModel.eventDialog.observe(viewLifecycleOwner, ::onShowDialog)
         viewModel.eventPrivatePolice.observe(viewLifecycleOwner, ::showToast)
-
 
         return binding.root
     }
@@ -89,6 +85,4 @@ class Page1Fragment : Fragment() {
     private fun showToast(s: String) {
         Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show()
     }
-
-
 }

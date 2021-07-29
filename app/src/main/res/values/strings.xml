@@ -78,4 +78,5 @@
     <string name="menu_home_weather">Home weather</string>
     <string name="menu_setting">Setting</string>
     <string name="reload_the_app">Reload the app</string>
+    <string name="your_city_is">Your city is :</string>
 </resources>

@@ -3,23 +3,18 @@ package com.gekaradchenko.weatherforeveryone.locations
 import android.Manifest
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import com.gekaradchenko.weatherforeveryone.R
-import com.gekaradchenko.weatherforeveryone.database.Location
 import com.gekaradchenko.weatherforeveryone.database.LocationDao
 import com.gekaradchenko.weatherforeveryone.lifecycle.SingleLiveEvent
-import com.gekaradchenko.weatherforeveryone.loadingfragment.LoadingFragmentDirections
 import com.gekaradchenko.weatherforeveryone.network.WeatherApi
 import com.gekaradchenko.weatherforeveryone.preferences.PreferencesLocations
 import com.gekaradchenko.weatherforeveryone.todayweather.APPID_KEY
 import com.gekaradchenko.weatherforeveryone.todayweather.EXCLUDE
-import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragment
 import com.gekaradchenko.weatherforeveryone.weatherviewpager.WeatherViewPagerFragmentDirections
-import com.gekaradchenko.weatherforeveryone.weekweather.WeekWeather
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -45,8 +40,8 @@ class LocationsViewModel(data: LocationDao, application: Application) :
     private val _list = MutableLiveData<List<LocationsForecast>>()
     val list: LiveData<List<LocationsForecast>> = _list
 
-    private val _toastShow = SingleLiveEvent<String>()
-    val toastShow: LiveData<String> = _toastShow
+    private val _snackBarShow = SingleLiveEvent<String>()
+    val snackBarShow: LiveData<String> = _snackBarShow
 
     val locations = dataBase.getAllLocation()
 
@@ -106,7 +101,7 @@ class LocationsViewModel(data: LocationDao, application: Application) :
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
                     _permissionBoolean.value = true
-                    _toastShow.postValue(app.getString(R.string.toast_permission_granted))
+                    _snackBarShow.postValue(app.getString(R.string.toast_permission_granted))
                 }
 
                 override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {
@@ -141,7 +136,7 @@ class LocationsViewModel(data: LocationDao, application: Application) :
     }
 
     fun showToastPermissionNotFound() {
-        _toastShow.postValue(app.getString(R.string.permission_not_found))
+        _snackBarShow.postValue(app.getString(R.string.permission_not_found))
     }
 
     override fun onCleared() {

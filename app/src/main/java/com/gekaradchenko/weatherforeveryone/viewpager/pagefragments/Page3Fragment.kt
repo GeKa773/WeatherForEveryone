@@ -79,6 +79,4 @@ class Page3Fragment : Fragment() {
     private fun showToast(s: String) {
         Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show()
     }
-
-
 }

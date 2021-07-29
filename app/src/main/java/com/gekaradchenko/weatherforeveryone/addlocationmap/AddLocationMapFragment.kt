@@ -68,7 +68,7 @@ class AddLocationMapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun showSnackBar(message: String) {
-        Snackbar.make(view ?: return, "Your city is : $message", Snackbar.LENGTH_SHORT)
+        Snackbar.make(view ?: return, "${getString(R.string.your_city_is)} $message", Snackbar.LENGTH_SHORT)
             .show()
     }
 

@@ -18,6 +18,7 @@ import com.gekaradchenko.weatherforeveryone.R
 import com.gekaradchenko.weatherforeveryone.WeatherActivity
 import com.gekaradchenko.weatherforeveryone.database.LocationDatabase
 import com.gekaradchenko.weatherforeveryone.databinding.FragmentLocationsBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 private const val PACKAGE = "package"
@@ -48,18 +49,13 @@ class LocationsFragment : Fragment() {
         })
 
         viewModel.navigationEvent.observe(viewLifecycleOwner, ::navigate)
-        viewModel.toastShow.observe(viewLifecycleOwner, ::showToast)
+        viewModel.snackBarShow.observe(viewLifecycleOwner, ::showSnackBar)
 
         viewModel.permissionBoolean.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) {
                     viewModel.onNavigateClick()
                 } else {
-//                    val intent = Intent()
-//                    intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-//                    intent.data =
-//                        Uri.fromParts(PACKAGE, requireActivity().packageName, FRAGMENT_STRING)
-//                    startActivity(intent)
                     viewModel.showToastPermissionNotFound()
                 }
             }
@@ -101,8 +97,10 @@ class LocationsFragment : Fragment() {
         return binding.root
     }
 
-    private fun showToast(massage: String) {
-        Toast.makeText(requireContext(), massage, Toast.LENGTH_SHORT).show()
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(view ?: return, message, Snackbar.LENGTH_SHORT)
+            .show()
     }
 
     private fun navigate(navDirections: NavDirections) {

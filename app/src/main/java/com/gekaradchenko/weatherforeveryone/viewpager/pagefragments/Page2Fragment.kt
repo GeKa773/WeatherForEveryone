@@ -26,12 +26,10 @@ class Page2Fragment : Fragment() {
         val bindingViewPager: FragmentViewPagerBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_view_pager, container, false)
 
-
         val application = requireNotNull(this.activity).application
         val viewModelFactory = PageFragmentFactory(application)
         val viewModel: PageViewModel =
             ViewModelProvider(this, viewModelFactory).get(PageViewModel::class.java)
-
 
         bindingViewPager.lifecycleOwner = this.requireActivity()
         binding.lifecycleOwner = viewLifecycleOwner
@@ -49,6 +47,4 @@ class Page2Fragment : Fragment() {
 
         return binding.root
     }
-
-
 }

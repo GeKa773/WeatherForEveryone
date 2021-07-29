@@ -75,4 +75,5 @@
     <string name="menu_home_weather">Дом погода</string>
     <string name="menu_setting">Настройки</string>
     <string name="reload_the_app">Перезагрузите приложение</string>
+    <string name="your_city_is">Твой город :</string>
 </resources>
